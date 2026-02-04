@@ -11,12 +11,21 @@
         body { font-family: 'Inter', sans-serif; color: #333; }
         section { padding: 80px 0; }
         
-        /* Foto de Perfil */
+        /*Profile Photo*/
         .profile-img {
-            width: 400px; height: 400px;
+            width: 400px;
+            height: 400px;
+            max-width: 100%; /* Garante que caiba no celular */
             object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border: 8px solid rgba(255, 255, 255, 0.8); /* Borda branca semi-transparente */
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.1), /* Sombra principal suave */
+                0 4px 8px rgba(0, 0, 0, 0.05);   /* Sombra de detalhe para profundidade */
+            transition: transform 0.3s ease;    /* Prepara para um efeito de movimento */
+        }
+
+        .profile-img:hover {
+            transform: scale(1.02); /* Dá um leve pulinho quando você passa o mouse */
         }
 
         /* Ícones Sociais */
@@ -49,7 +58,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top border-bottom">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">DAVIRIBEIRO</a>
+            <a class="navbar-brand fw-bold" href="#">DAVI RIBEIRO</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
