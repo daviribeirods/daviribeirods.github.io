@@ -55,6 +55,11 @@
     transition: color 0.3s ease;
 }
 
+.navbar-nav .nav-link.active {
+    color: var(--bs-primary) !important;
+    font-weight: 700;
+}
+
 [data-bs-theme="dark"] .nav-link {
     color: var(--bs-body-color);
 }
@@ -62,7 +67,7 @@
 /* 3. TIPOGRAFIA E ELEMENTOS GERAIS */
 html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; }
-section { padding: 120px 0; }
+section { padding: 320px 0; }
 
 /* 4. UNIFIED BUTTON STYLE */
 .btn-dark, .btn-primary {
