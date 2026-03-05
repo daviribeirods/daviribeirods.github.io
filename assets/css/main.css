@@ -1,0 +1,161 @@
+/* 1. PYTHON-INSPIRED THEME VARIABLES */
+:root {
+    --py-blue: #3776AB;
+    --py-blue-rgb: 55, 118, 171;
+    --py-yellow: #FFD43B;
+    --py-yellow-rgb: 255, 212, 59;
+}
+
+/* Light Theme (Default) */
+[data-bs-theme="light"] {
+    --bs-primary: var(--py-blue);
+    --bs-primary-rgb: var(--py-blue-rgb);
+}
+
+/* Dark Theme */
+[data-bs-theme="dark"] {
+    --bs-body-bg: #1E293B;      /* Dark Slate Blue */
+    --bs-body-color: #E2E8F0;   /* Light Slate Gray */
+    --bs-primary: var(--py-yellow); /* Yellow for primary accent in dark mode */
+    --bs-primary-rgb: var(--py-yellow-rgb);
+    --bs-secondary: #94a3b8;    /* Slate 400 */
+}
+
+/* 2. GLOBAL OVERRIDES FOR THEME CONSISTENCY */
+[data-bs-theme="dark"] .bg-white, 
+[data-bs-theme="dark"] .bg-light,
+[data-bs-theme="dark"] .card,
+[data-bs-theme="dark"] nav,
+[data-bs-theme="dark"] header,
+[data-bs-theme="dark"] section,
+[data-bs-theme="dark"] footer {
+    background-color: var(--bs-body-bg) !important;
+    color: var(--bs-body-color) !important;
+}
+
+/* Override for specific elements in dark mode */
+[data-bs-theme="dark"] .text-secondary {
+    color: #cbd5e1 !important; /* Slate 300 */
+}
+
+[data-bs-theme="dark"] .text-muted {
+    color: #94a3b8 !important; /* Slate 400 */
+}
+
+[data-bs-theme="dark"] .text-primary {
+    color: var(--bs-primary) !important; /* Yellow */
+}
+
+[data-bs-theme="dark"] nav.navbar {
+    border-bottom-color: rgba(var(--bs-primary-rgb), 0.5) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--bs-primary) !important;
+    transition: color 0.3s ease;
+}
+
+[data-bs-theme="dark"] .nav-link {
+    color: var(--bs-body-color);
+}
+
+/* 3. TIPOGRAFIA E ELEMENTOS GERAIS */
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; }
+section { padding: 120px 0; }
+
+/* 4. UNIFIED BUTTON STYLE */
+.btn-dark, .btn-primary {
+    background-color: var(--bs-primary) !important;
+    border-color: var(--bs-primary) !important;
+    color: #fff !important; /* White text on blue */
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+}
+
+.btn-outline-primary {
+    color: var(--bs-primary) !important;
+    border-color: var(--bs-primary) !important;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+[data-bs-theme="dark"] .btn-dark,
+[data-bs-theme="dark"] .btn-primary {
+    color: #000 !important; /* Black text on yellow */
+}
+
+.btn-dark:hover, .btn-primary:hover, .btn-outline-primary:hover {
+    background-color: var(--bs-primary) !important;
+    color: #fff !important;
+    transform: translateY(-3px);
+    filter: brightness(1.1); 
+    box-shadow: 0 8px 20px rgba(var(--bs-primary-rgb), 0.4) !important;
+}
+
+[data-bs-theme="dark"] .btn-outline-primary:hover {
+    color: #000 !important;
+}
+
+/* 5. ÍCONES SOCIAIS */
+.social-icon {
+    font-size: 1.8rem;
+    transition: all 0.2s ease;
+    color: #6c757d;
+}
+.social-icon:hover { 
+    transform: translateY(-3px); 
+    color: var(--bs-primary) !important;
+    filter: drop-shadow(0 0 8px var(--bs-primary));
+}
+[data-bs-theme="dark"] .social-icon {
+    color: #94a3b8 !important; /* Slate 400 */
+}
+.profile-img {
+    width: 450px;
+    height: 450px;
+    max-width: 100%;
+    object-fit: cover;
+    border: 4px solid transparent;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.profile-img:hover { 
+    transform: scale(1.02); 
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15), 0 0 25px rgba(var(--bs-primary-rgb), 0.5);
+}
+[data-bs-theme="dark"] .profile-img {
+    border-color: rgba(var(--bs-primary-rgb), 0.25); /* Subtle yellow border */
+}
+
+/* 7. LINHA DO TEMPO (Timeline) */
+.exp-item {
+    border-left: 2px solid #475569; /* Slate 600 */
+    padding-left: 20px;
+    position: relative;
+}
+[data-bs-theme="light"] .exp-item {
+    border-left-color: #cbd5e1; /* Slate 300 */
+}
+.exp-item::before {
+    content: "";
+    position: absolute;
+    left: -9px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: var(--bs-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--bs-primary);
+}
+[data-bs-theme="dark"] #contato .btn-primary {
+    background-color: transparent !important;
+    border: 2px solid var(--bs-primary) !important;
+    color: var(--bs-primary) !important;
+}
+[data-bs-theme="dark"] #contato .btn-primary:hover {
+    background-color: var(--bs-primary) !important;
+    color: #000 !important;
+}
