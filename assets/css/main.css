@@ -160,6 +160,10 @@ section { padding: 320px 0; }
     padding-left: 1.5rem; /* Garante o espaço para os bullet points */
 }
 
+.exp-item ul, .exp-item p.text-secondary {
+    text-align: justify;
+}
+
 [data-bs-theme="dark"] #contato .btn-primary {
     background-color: transparent !important;
     border: 2px solid var(--bs-primary) !important;
