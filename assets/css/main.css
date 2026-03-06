@@ -155,6 +155,11 @@ section { padding: 320px 0; }
     border-radius: 50%;
     box-shadow: 0 0 10px var(--bs-primary);
 }
+
+.exp-item ul {
+    padding-left: 1.5rem; /* Garante o espaço para os bullet points */
+}
+
 [data-bs-theme="dark"] #contato .btn-primary {
     background-color: transparent !important;
     border: 2px solid var(--bs-primary) !important;
