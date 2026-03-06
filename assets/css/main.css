@@ -164,6 +164,15 @@ section { padding: 320px 0; }
     text-align: justify;
 }
 
+/* 8. SEÇÃO DE SKILLS (Ícones) */
+.tech-icon {
+    font-size: 4rem; /* Tamanho grande para destaque */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.tech-icon:hover {
+    transform: translateY(-10px) scale(1.1);
+}
+
 [data-bs-theme="dark"] #contato .btn-primary {
     background-color: transparent !important;
     border: 2px solid var(--bs-primary) !important;
