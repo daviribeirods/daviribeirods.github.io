@@ -1,0 +1,27 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler (Ruby)
+.bundle/
+vendor/
+
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Configurações de IDEs (VS Code, etc)
+.vscode/
+.idea/
+
+# Python / Data Science (Para futuros scripts)
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.venv/
+env/
+.env
+*.log

@@ -1,0 +1,30 @@
+---
+layout: default
+title: Davi Ribeiro | Blog
+---
+
+<main class="container py-5 mt-5 min-vh-100">
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h1 class="display-4 fw-bold text-primary">Blog</h1>
+            <p class="fs-5 text-muted">Compartilhando aprendizados, projetos e ideias sobre dados e tecnologia.</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% for post in site.posts %}
+            <div class="card border-0 shadow-sm rounded-4 mb-4 p-4">
+                <div class="card-body">
+                    <small class="text-primary fw-bold">{{ post.date | date: "%d/%m/%Y" }}</small>
+                    <h2 class="card-title fw-bold mt-2">
+                        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-body">{{ post.title }}</a>
+                    </h2>
+                    <p class="card-text text-muted mt-3">{{ post.excerpt | strip_html | truncatewords: 15 }}</p>
+                    <a href="{{ post.url | relative_url }}" class="btn btn-outline-primary btn-sm rounded-pill px-4 mt-2">Ler artigo</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
