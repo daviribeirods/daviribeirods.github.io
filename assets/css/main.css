@@ -67,7 +67,7 @@
 /* 3. TIPOGRAFIA E ELEMENTOS GERAIS */
 html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; }
-section { padding: 320px 0; }
+section { padding: 10px 0; }
 
 /* 4. UNIFIED BUTTON STYLE */
 .btn-dark, .btn-primary {
