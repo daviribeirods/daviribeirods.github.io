@@ -1,172 +1,344 @@
 ---
 layout: default
-title: Davi Ribeiro | Home
+title: Davi Ribeiro | Cientista de Dados & Risk Systems
 ---
 
-<header id="home" class="bg-white py-5 min-vh-100 d-flex align-items-center">
+<!-- =========================================================================
+     1. HERO SECTION (Centered + Stylized AI Avatar + Status Tag)
+     ========================================================================= -->
+<header id="home" class="hero-section text-center">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-5 text-center mb-4 mb-lg-0">
-                <img src="{{ '/assets/img/profile.webp' | relative_url }}" alt="Davi Ribeiro" class="rounded-circle profile-img">
-            </div>
-            
-            <div class="col-lg-7 text-center text-lg-start">
-                <h1 class="display-4 fw-bold text-primary">Davi Ribeiro</h1>
-                <h3 class="text-secondary mb-4">Cientista de Dados | Desenvolvedor de Software</h3>
-                <p class="fs-5 text-muted mb-4">
-                    Transformo grandes volumes de dados em insights estratégicos. 
-                    Especialista em modelos preditivos e apaixonado pela intersecção entre 
-                    tecnologia e negócios.
-                </p>
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
                 
-                <div class="d-flex justify-content-center justify-content-lg-start gap-4 mb-5">
-                    <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="social-icon" title="LinkedIn">
-                        <i class="bi bi-linkedin"></i>
+                <!-- Availability Status Tag -->
+                <div class="reveal is-visible">
+                    <div class="status-pill">
+                        <span class="status-dot"></span>
+                        Disponível para novas oportunidades • Data Scientist / Risk
+                    </div>
+                </div>
+
+                <!-- Main Headline & Role -->
+                <h1 class="hero-title reveal is-visible delay-1">Davi Ribeiro</h1>
+                <div class="hero-role reveal is-visible delay-1">&lt;Cientista de Dados | Machine Learning & Risk Systems /&gt;</div>
+
+                <!-- Centered Stylized AI Avatar Ring -->
+                <div class="avatar-halo-container reveal is-visible delay-2">
+                    <div class="avatar-glow-ring"></div>
+                    <div class="avatar-img-frame">
+                        <img src="{{ '/assets/img/profile.webp' | relative_url }}" alt="Davi Ribeiro - Cientista de Dados" class="avatar-img">
+                    </div>
+                </div>
+
+                <!-- Core Impact Statement -->
+                <p class="hero-bio reveal is-visible delay-2">
+                    Especialista em <strong>Detecção de Fraudes</strong>, <strong>Modelagem Preditiva</strong> e <strong>Pipelines de IA em Escala</strong>. 
+                    Uno rigor estatístico e engenharia de software para transformar dados complexos em sistemas seguros e de alto impacto de negócio.
+                </p>
+
+                <!-- Social Media Pills Bar -->
+                <div class="social-pills-wrap reveal is-visible delay-3">
+                    <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="social-pill" title="LinkedIn">
+                        <i class="bi bi-linkedin text-primary"></i> LinkedIn
                     </a>
-                    <a href="https://www.youtube.com/@daviribeirods" target="_blank" class="social-icon" title="YouTube">
-                        <i class="bi bi-youtube"></i>
+                    <a href="https://github.com/daviribeirods" target="_blank" class="social-pill" title="GitHub">
+                        <i class="bi bi-github"></i> GitHub
                     </a>
-                    <a href="https://github.com/daviribeirods" target="_blank" class="social-icon" title="GitHub">
-                        <i class="bi bi-github"></i>
+                    <a href="https://x.com/daviribeirods" target="_blank" class="social-pill" title="Twitter/X">
+                        <i class="bi bi-twitter-x"></i> Twitter/X
                     </a>
-                    <a href="https://x.com/daviribeirods" target="_blank" class="social-icon" title="Twitter">
-                        <i class="bi bi-twitter-x"></i> 
+                    <a href="https://www.youtube.com/@daviribeirods" target="_blank" class="social-pill" title="YouTube">
+                        <i class="bi bi-youtube text-danger"></i> YouTube
                     </a>
-                    <a href="https://medium.com/@davidatascientist" target="_blank" class="social-icon" title="Medium">
-                        <i class="bi bi-medium"></i>
+                    <a href="https://medium.com/@davidatascientist" target="_blank" class="social-pill" title="Medium">
+                        <i class="bi bi-medium text-success"></i> Medium
+                    </a>
+                    <a href="mailto:davidatascientist@gmail.com" class="social-pill" title="Email">
+                        <i class="bi bi-envelope-fill text-warning"></i> Email
                     </a>
                 </div>
 
-                <a href="assets/curriculum/curriculo.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg px-5 rounded-pill shadow-sm">
-                    <i class="bi bi-file-earmark-pdf-fill me-2"></i>Ver Currículo
-                </a>
+                <!-- Action CTAs -->
+                <div class="d-flex flex-wrap justify-content-center gap-3 reveal is-visible delay-3">
+                    <a href="#projetos" class="btn-tech-primary">
+                        <i class="bi bi-arrow-down-circle"></i> Explorar Projetos
+                    </a>
+                    <a href="assets/curriculum/curriculo.pdf" target="_blank" rel="noopener noreferrer" class="btn-tech-secondary">
+                        <i class="bi bi-file-earmark-pdf"></i> Ver Currículo
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>
 </header>
 
-    <section id="portfolio" class="bg-light">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-5">Projetos em Destaque</h2>
-            <p class="text-muted fs-5">Projetos em andamento. Volte em breve para novidades!</p>
-            <!-- <div class="col-md-7 mx-auto">
-                <div class="card border-0 shadow-sm p-5 rounded-4 mb-4">
-                    <h4 class="fw-bold">Análise de Dados com Python</h4>
-                    <p class="text-muted mb-3">Estudo de caso sobre o mercado financeiro usando Pandas e Matplotlib.</p>
-                    <a href="pages/projeto1.html" target="_blank" class="btn btn-sm btn-outline-primary w-25 mx-auto">Ver detalhes</a>
-                </div>
-            </div> -->
+<!-- =========================================================================
+     2. FEATURED PROJECTS (Full-Width Case Study Cards with Real Metrics)
+     ========================================================================= -->
+<section id="projetos" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-4">
+            <div class="col-lg-8">
+                <span class="section-tag reveal">// PROJETOS EM DESTAQUE</span>
+                <h2 class="section-heading reveal delay-1">Modelagem Preditiva & Risco Financeiro</h2>
+                <p class="section-subtext reveal delay-1">
+                    Soluções de dados desenvolvidas com foco em retorno sobre investimento, combate a fraudes e robustez em produção.
+                </p>
+            </div>
         </div>
-    </section>
 
-    <section id="sobre" class="bg-white">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-7">
-                    <h2 class="fw-bold mb-5 text-center">Minha Trajetória</h2>
-                    <div class="exp-item mb-5">
-                        <h5 class="fw-bold mb-1">Engenheiro de Soluções</h5>
-                        <p class="text-primary fw-medium mb-2">Dadosfera • Fev/2025 - Agosto/2025</p>
-                        <ul class="text-secondary">
-                            <li> Suporte técnico na migração de infraestrutura legada (IBM) para Snowflake, atuando na documentação técnica e na validação de schemas traduzidos via LLMs (OpenAI, Gemini e Anthropic).</li>
-                            <li> Configuração e ajuste de sistemas inteligentes baseados em arquitetura RAG e agentes de IA, adaptando pipelines existentes para atender necessidades específicas de clientes corporativos.</li>
-                            <li> Desenvolvimento e manutenção de APIs utilizando FastAPI e Flask, com foco na automação de deploys via GitHub Actions em ambientes AWS.</li>
-                            <li> Atuação em FinOps, auxiliando na governança de dados e otimização de queries, contribuindo para uma redução de 10% nos custos de Cloud.</li>
-                        </ul>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+
+                <!-- Case Study Card 1: Detecção de Fraudes -->
+                <div class="project-card reveal">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                        <span class="project-category">FRAUD PREVENTION • MACHINE LEARNING</span>
+                        <span class="badge bg-dark-subtle border border-secondary-subtle text-muted font-monospace small">Produção</span>
+                    </div>
+                    <h3 class="project-title">Sistema Preditivo de Detecção de Fraudes com XGBoost & SHAP</h3>
+                    <p class="project-desc">
+                        Arquitetura de modelagem para identificação de transações fraudulentas sob cenários de classes extremamente desbalanceadas. 
+                        Engenharia de features com agregação histórica e implementação de explicabilidade auditável (XAI via SHAP) para suporte a decisões de risco em tempo hábil.
+                    </p>
+
+                    <!-- Metrics Badges -->
+                    <div class="metrics-grid">
+                        <div class="metric-pill highlight">
+                            <i class="bi bi-graph-up-arrow"></i> 3x Volume de Detecção
+                        </div>
+                        <div class="metric-pill cyan">
+                            <i class="bi bi-bullseye"></i> 0.95 ROC-AUC
+                        </div>
+                        <div class="metric-pill highlight">
+                            <i class="bi bi-shield-check"></i> -40% Falsos Positivos
+                        </div>
+                        <div class="metric-pill amber">
+                            <i class="bi bi-stopwatch"></i> &lt;45ms Latência de Score
+                        </div>
                     </div>
 
-                    <div class="exp-item mb-5">
-                        <h5 class="fw-bold mb-1">Cientista de Dados</h5>
-                        <p class="text-primary fw-medium mb-2">Dadosfera • Ago/2024 - Fev/2025</p>
-                        <ul class="text-secondary">
-                            <li> Construção de modelos de Machine Learning (XGBoost) para detecção de fraudes, triplicando o volume de detecção nas primeiras semanas.</li>
-                            <li> Implementação de algoritmos de Clusterização e análise RFM para segmentação de base e retenção de clientes.</li>
-                            <li> Engenharia de features em larga escala utilizando Snowpark, PySpark e SQL avançado.</li>
-                        </ul>
+                    <!-- Tech Stack Pills -->
+                    <div class="mb-4">
+                        <span class="tech-pill"><i class="devicon-python-plain text-primary"></i> Python</span>
+                        <span class="tech-pill"><i class="devicon-scikitlearn-plain text-warning"></i> XGBoost</span>
+                        <span class="tech-pill"><i class="bi bi-diagram-3-fill text-info"></i> SHAP (XAI)</span>
+                        <span class="tech-pill"><i class="devicon-apachespark-original text-danger"></i> PySpark / Snowpark</span>
+                        <span class="tech-pill"><i class="devicon-azuresqldatabase-plain text-info"></i> SQL Avançado</span>
+                        <span class="tech-pill"><i class="devicon-fastapi-plain text-success"></i> FastAPI</span>
                     </div>
 
-                    <div class="exp-item mb-5">
-                        <h5 class="fw-bold mb-1">Analista de Dados</h5>
-                        <p class="text-primary fw-medium mb-2">Dadosfera • Jul/2023 - Ago/2024</p>
-                        <ul class="text-secondary">
-                            <li> Implementação e execução da migração massiva de dados do GA3 para Snowflake, desenvolvendo pipelines de dados em batch para garantir a integridade de milhões de registros.</li>
-                            <li> Construção do zero de Web Crawlers em Python, estruturando dados não estruturados e automatizando integralmente o fluxo de qualificação de leads.</li>
-                            <li> Desenvolvimento e deploy de Data Apps em Streamlit e dashboards em Metabase, facilitando o monitoramento de KPIs em tempo real para o time executivo.</li>
-                        </ul>
+                    <!-- Actions -->
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="https://github.com/daviribeirods" target="_blank" class="btn-tech-primary">
+                            <i class="bi bi-github"></i> Ver Código no GitHub
+                        </a>
+                        <a href="#contato" class="btn-tech-secondary">
+                            <i class="bi bi-chat-dots"></i> Discutir Arquitetura
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Case Study Card 2: Engenharia de Dados & Snowflake -->
+                <div class="project-card reveal delay-1">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                        <span class="project-category">DATA ENGINEERING • CLOUD & FINOPS</span>
+                        <span class="badge bg-dark-subtle border border-secondary-subtle text-muted font-monospace small">Infraestrutura</span>
+                    </div>
+                    <h3 class="project-title">Migração Massiva de Dados Analíticos & Otimização FinOps</h3>
+                    <p class="project-desc">
+                        Construção e execução de pipelines em batch para migração de infraestrutura legada para Snowflake, 
+                        desenvolvimento de web crawlers em larga escala para estruturação de dados e governança de queries resultando em redução consistente de custos em Cloud.
+                    </p>
+
+                    <!-- Metrics Badges -->
+                    <div class="metrics-grid">
+                        <div class="metric-pill highlight">
+                            <i class="bi bi-currency-dollar"></i> -10% Custos Cloud (FinOps)
+                        </div>
+                        <div class="metric-pill cyan">
+                            <i class="bi bi-database-check"></i> Milhões de Registros Migrados
+                        </div>
+                        <div class="metric-pill amber">
+                            <i class="bi bi-check-circle"></i> 100% Integridade de Schema
+                        </div>
                     </div>
 
-                    <div class="exp-item mb-5">
-                        <h5 class="fw-bold mb-1">Bacharelado em Ciência da Computação (Formação)</h5>
-                        <p class="text-primary fw-medium mb-2">Universidade Federal do Tocantins, Palmas-TO • 2016 - 2021</p>
-                        <ul class="text-secondary">
-                            <li><strong>Trabalho de Conclusão:</strong> Desenvolvimento de modelo de Análise de Sentimentos para tendências do mercado financeiro usando Python e Scikit-learn.</li>
-                            <li><strong>Monitoria Acadêmica:</strong> Mentoria de alunos em Estrutura de Dados I e II (Linguagem C) e Cálculo Diferencial e Integral.</li>
-                            <li><strong>Maratona de Programação:</strong> Classificação para as finais nacionais da Maratona de Programação da SBC em 2017 e 2018.</li>
-                        </ul>
+                    <!-- Tech Stack Pills -->
+                    <div class="mb-4">
+                        <span class="tech-pill"><i class="devicon-python-plain text-primary"></i> Python</span>
+                        <span class="tech-pill"><i class="devicon-azuresqldatabase-plain text-info"></i> Snowflake SQL</span>
+                        <span class="tech-pill"><i class="devicon-amazonwebservices-plain-wordmark text-warning"></i> AWS</span>
+                        <span class="tech-pill"><i class="devicon-docker-plain text-primary"></i> Docker</span>
+                        <span class="tech-pill"><i class="devicon-streamlit-plain text-danger"></i> Streamlit</span>
                     </div>
 
-                    <div class="exp-item mb-5">
-                        <h5 class="fw-bold mb-1">Técnico em Informática para Internet (Formação)</h5>
-                        <p class="text-primary fw-medium mb-2">Instituto Federal do Tocantins, Palmas-TO • 2013 - 2015</p>
-                        <p class="text-secondary">Ensino Médio Integrado ao curso técnico de Informática para Internet. O curso tinha o foco em lógica de programação, arquitetura de redes e desenvolvimento web (PHP/JavaScript/SQL).</p>
+                    <!-- Actions -->
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="https://github.com/daviribeirods" target="_blank" class="btn-tech-primary">
+                            <i class="bi bi-github"></i> Repositório do Projeto
+                        </a>
                     </div>
+                </div>
+
+                <!-- Case Study Card 3: Agentes de IA & RAG -->
+                <div class="project-card reveal delay-2">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                        <span class="project-category">GENERATIVE AI • LLM ORCHESTRATION</span>
+                        <span class="badge bg-dark-subtle border border-secondary-subtle text-muted font-monospace small">AI Systems</span>
+                    </div>
+                    <h3 class="project-title">Pipelines de RAG & Agentes Autônomos com LLMs Corporativos</h3>
+                    <p class="project-desc">
+                        Desenvolvimento e orquestração de agentes inteligentes para consulta contextual em bases documentais corporativas. 
+                        Integração multi-LLM (OpenAI, Gemini, Anthropic) com validação de schemas em tempo real e deploys automatizados via CI/CD.
+                    </p>
+
+                    <!-- Metrics Badges -->
+                    <div class="metrics-grid">
+                        <div class="metric-pill cyan">
+                            <i class="bi bi-cpu"></i> Orquestração Multi-LLM
+                        </div>
+                        <div class="metric-pill highlight">
+                            <i class="bi bi-lightning-charge"></i> FastAPI em Alta Disponibilidade
+                        </div>
+                        <div class="metric-pill amber">
+                            <i class="bi bi-git"></i> CI/CD Automatizado (GitHub Actions)
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack Pills -->
+                    <div class="mb-4">
+                        <span class="tech-pill"><i class="devicon-python-plain text-primary"></i> Python</span>
+                        <span class="tech-pill"><i class="bi bi-robot text-info"></i> OpenAI / Gemini / Claude</span>
+                        <span class="tech-pill"><i class="devicon-fastapi-plain text-success"></i> FastAPI</span>
+                        <span class="tech-pill"><i class="devicon-githubactions-plain text-white"></i> GitHub Actions</span>
+                        <span class="tech-pill"><i class="devicon-docker-plain text-primary"></i> Docker</span>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="https://github.com/daviribeirods" target="_blank" class="btn-tech-primary">
+                            <i class="bi bi-github"></i> Explorar Implementações
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================================
+     3. WRITING & BLOG FEED (Scroll-First Direct Insights)
+     ========================================================================= -->
+<section id="artigos" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-4">
+            <div class="col-lg-8">
+                <span class="section-tag reveal">// CADERNO ABERTO & INSIGHTS</span>
+                <h2 class="section-heading reveal delay-1">Artigos & Análises Técnicas</h2>
+                <p class="section-subtext reveal delay-1">
+                    Documentando o processo prático de modelagem, algoritmos, prevenção a fraudes e desafios no mundo real dos dados.
+                </p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                {% if site.posts.size > 0 %}
+                    {% for post in site.posts limit: 3 %}
+                    <a href="{{ post.url | relative_url }}" class="article-row-card reveal delay-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="article-date">{{ post.date | date: "%d/%m/%Y" }}</span>
+                            <span class="text-muted small font-monospace"><i class="bi bi-book me-1"></i> Artigo</span>
+                        </div>
+                        <h4 class="article-title">{{ post.title }}</h4>
+                        <p class="article-snippet">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                    </a>
+                    {% endfor %}
+                {% else %}
+                    <div class="article-row-card reveal">
+                        <span class="article-date">Em Breve</span>
+                        <h4 class="article-title">Detecção de Fraudes com Dados Desbalanceados: Técnicas e Armadilhas</h4>
+                        <p class="article-snippet">Um guia prático sobre como balancear precisão e recall em fluxos transacionais de alto volume.</p>
+                    </div>
+                {% endif %}
+
+                <div class="text-center mt-4 reveal delay-2">
+                    <a href="{{ '/blog.html' | relative_url }}" class="btn-tech-secondary">
+                        <i class="bi bi-journal-text"></i> Ver Todos os Artigos
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="skills" class="bg-light">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-5">Tecnologias & Ferramentas</h2>
-            <div class="row justify-content-center gap-4">
-                <!-- Python -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-python-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">Python</p>
+<!-- =========================================================================
+     4. FREELANCE & CONTACT SECTION
+     ========================================================================= -->
+<section id="contato" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                
+                <!-- Freelance / Consulting Box -->
+                <div class="services-card reveal mb-5">
+                    <div class="services-badge-chip">
+                        <i class="bi bi-lightning-charge-fill"></i> DISPONÍVEL PARA CONSULTORIA & FREELANCE
+                    </div>
+                    <h3 class="fw-bold mb-3">Precisa de Automação ou Soluções com IA?</h3>
+                    <p class="text-muted mb-4">
+                        Além de buscar uma oportunidade em tempo integral como Cientista de Dados no setor financeiro, 
+                        também atendo clientes em projetos pontuais de alto valor:
+                    </p>
+                    
+                    <div class="row text-start g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="p-3 rounded-3 bg-dark-subtle border border-secondary-subtle h-100">
+                                <h6 class="fw-bold text-white mb-2"><i class="bi bi-robot text-info me-2"></i>Agentes & Bots de IA</h6>
+                                <small class="text-muted">Treinamento de assistentes corporativos com RAG e bases privadas.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 rounded-3 bg-dark-subtle border border-secondary-subtle h-100">
+                                <h6 class="fw-bold text-white mb-2"><i class="bi bi-gear-wide-connected text-warning me-2"></i>Automação & Scraping</h6>
+                                <small class="text-muted">Web crawlers robustos e automação de fluxos repetitivos de dados.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 rounded-3 bg-dark-subtle border border-secondary-subtle h-100">
+                                <h6 class="fw-bold text-white mb-2"><i class="bi bi-graph-up text-success me-2"></i>Modelos ML & APIs</h6>
+                                <small class="text-muted">Desenvolvimento e deploy de APIs preditivas prontas para integração.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="mailto:davidatascientist@gmail.com?subject=Oportunidade%20/%20Projeto%20de%20Consultoria" class="btn-tech-primary">
+                        <i class="bi bi-send-fill"></i> Solicitar Proposta de Projeto
+                    </a>
                 </div>
-                <!-- Pandas -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-pandas-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">Pandas</p>
+
+                <!-- Main Contact Box -->
+                <div class="text-center reveal delay-1">
+                    <span class="section-tag">// VAMOS CONECTAR</span>
+                    <h2 class="section-heading">Vamos tomar um café virtual?</h2>
+                    <p class="section-subtext mb-4">
+                        Quer conversar sobre uma posição no seu time, tirar dúvidas sobre um projeto ou falar sobre prevenção a fraudes? Minha caixa de entrada está sempre aberta.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="mailto:davidatascientist@gmail.com" class="btn-tech-primary">
+                            <i class="bi bi-envelope-at-fill"></i> davidatascientist@gmail.com
+                        </a>
+                        <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="btn-tech-secondary">
+                            <i class="bi bi-linkedin"></i> Conectar no LinkedIn
+                        </a>
+                    </div>
                 </div>
-                <!-- Scikit-Learn -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-scikitlearn-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">Scikit-learn</p>
-                </div>
-                <!-- SQL -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-azuresqldatabase-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">SQL</p>
-                </div>
-                <!-- AWS -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-amazonwebservices-plain-wordmark colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">AWS</p>
-                </div>
-                <!-- Docker -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-docker-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">Docker</p>
-                </div>
-                <!-- Git -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-git-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">Git</p>
-                </div>
-                <!-- Streamlit -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-streamlit-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">Streamlit</p>
-                </div>
+
             </div>
         </div>
-    </section>
-
-    <section id="contato" class="bg-white text-center">
-        <div class="container">
-            <h2 class="fw-bold mb-4">Vamos conversar?</h2>
-            <p class="text-muted mb-4">Sinta-se à vontade para me mandar uma mensagem!</p>
-            <a href="mailto:davidatascientist@gmail.com" class="btn btn-primary btn-lg rounded-pill px-5">Enviar Email</a>
-        </div>
-    </section>
+    </div>
+</section>

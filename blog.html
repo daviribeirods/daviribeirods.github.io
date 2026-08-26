@@ -1,30 +1,35 @@
 ---
 layout: default
-title: Davi Ribeiro | Blog
+title: Davi Ribeiro | Caderno Aberto de Dados & Tecnologia
 ---
 
-<main class="container py-5 mt-5 min-vh-100">
-    <div class="row mb-5">
-        <div class="col-12 text-center">
-            <h1 class="display-4 fw-bold text-primary">Blog</h1>
-            <p class="fs-5 text-muted">Compartilhando aprendizados, projetos e ideias sobre dados e tecnologia.</p>
+<main class="container py-5 mt-4 min-vh-100">
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-8 text-center">
+            <span class="section-tag reveal">// CADERNO ABERTO</span>
+            <h1 class="section-heading reveal delay-1">Artigos & Insights</h1>
+            <p class="section-subtext reveal delay-1">Estudos, anotações de algoritmos, detecção de anomalias e reflexões práticas sobre Ciência de Dados.</p>
         </div>
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-lg-8">
             {% for post in site.posts %}
-            <div class="card border-0 shadow-sm rounded-4 mb-4 p-4">
-                <div class="card-body">
-                    <small class="text-primary fw-bold">{{ post.date | date: "%d/%m/%Y" }}</small>
-                    <h2 class="card-title fw-bold mt-2">
-                        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-body">{{ post.title }}</a>
-                    </h2>
-                    <p class="card-text text-muted mt-3">{{ post.excerpt | strip_html | truncatewords: 15 }}</p>
-                    <a href="{{ post.url | relative_url }}" class="btn btn-outline-primary btn-sm rounded-pill px-4 mt-2">Ler artigo</a>
+            <a href="{{ post.url | relative_url }}" class="article-row-card reveal delay-1">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span class="article-date">{{ post.date | date: "%d/%m/%Y" }}</span>
+                    <span class="text-muted small font-monospace"><i class="bi bi-clock me-1"></i> Leitura rápida</span>
                 </div>
-            </div>
+                <h2 class="article-title">{{ post.title }}</h2>
+                <p class="article-snippet">{{ post.excerpt | strip_html | truncatewords: 22 }}</p>
+            </a>
             {% endfor %}
+
+            <div class="text-center mt-5 reveal delay-2">
+                <a href="{{ '/' | relative_url }}" class="btn-tech-secondary">
+                    <i class="bi bi-arrow-left"></i> Voltar ao Portfólio
+                </a>
+            </div>
         </div>
     </div>
 </main>

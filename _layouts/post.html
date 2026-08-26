@@ -1,19 +1,29 @@
 ---
 layout: default
 ---
-<main class="container py-5 mt-4" style="max-width: 800px;">
-    <article>
-        <header class="mb-5 border-bottom pb-4 text-center">
-            <h1 class="display-5 fw-bold text-primary">{{ page.title }}</h1>
-            <p class="text-muted mt-3">Publicado em {{ page.date | date: "%d/%m/%Y" }}</p>
+<main class="container py-5 mt-4" style="max-width: 820px;">
+    <article class="reveal is-visible">
+        <header class="mb-5 border-bottom border-secondary-subtle pb-4">
+            <span class="section-tag mb-2">// ARTIGO TÉCNICO</span>
+            <h1 class="display-5 fw-bold mb-3">{{ page.title }}</h1>
+            <div class="d-flex align-items-center gap-3 text-muted font-monospace small">
+                <span><i class="bi bi-calendar3 me-1 text-primary"></i> {{ page.date | date: "%d/%m/%Y" }}</span>
+                <span>•</span>
+                <span><i class="bi bi-person-fill me-1 text-primary"></i> Davi Ribeiro</span>
+            </div>
         </header>
         
-        <section class="lh-lg post-content">
+        <section class="lh-lg post-content fs-5" style="color: var(--text-muted);">
             {{ content }}
         </section>
         
-        <div class="mt-5 pt-4 border-top">
-            <a href="{{ '/blog.html' | relative_url }}" class="btn btn-link text-decoration-none px-0">← Voltar para o Blog</a>
+        <div class="mt-5 pt-4 border-top border-secondary-subtle d-flex justify-content-between align-items-center">
+            <a href="{{ '/blog.html' | relative_url }}" class="btn-tech-secondary">
+                <i class="bi bi-arrow-left"></i> Voltar aos Artigos
+            </a>
+            <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="btn-tech-primary">
+                <i class="bi bi-linkedin"></i> Compartilhar no LinkedIn
+            </a>
         </div>
     </article>
 </main>
