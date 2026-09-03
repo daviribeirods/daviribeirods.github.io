@@ -1,107 +1,115 @@
-# Portfólio Profissional v1.0 - Davi Ribeiro
+# Professional Data Science Portfolio v2.0 - Davi Santos
 
-Um portfólio moderno e responsivo para apresentar minha jornada como Cientista de Dados, com foco em me tornar um especialista em prevenção e detecção de fraudes.
+A modern, corporate, and interactive portfolio designed to showcase my work as a **Data Scientist**, focusing on **Predictive Modeling**, **Machine Learning**, and analytical solutions for the financial sector and fraud prevention.
 
-## 🚀 Visão Geral
-
-Este projeto foi construído com três objetivos principais:
-
-1.  **Registro Pessoal:** Servir como um local centralizado para documentar meus projetos de ponta a ponta.
-2.  **Demonstração de Habilidades:** Mostrar minhas competências como Cientista de Dados na resolução de problemas complexos e na geração de valor.
-3.  **Evolução Profissional:** Registrar minha trajetória e evolução contínua na área de dados, especialmente em prevenção a fraudes.
-
-O design clean e minimalista reflete minha fase atual de vida, mais focada e dedicada ao desenvolvimento profissional.
+🌐 **Live Website:** [daviribeirods.github.io](https://daviribeirods.github.io)
 
 ---
 
-## ✨ Funcionalidades e Demonstração
+## 🚀 What's New in Version 2.0
 
-Você pode ver o portfólio ao vivo no seguinte link:
+**Version 2.0** represents a comprehensive overhaul in architecture, visual design, and user experience compared to the previous release:
 
-**[daviribeirods.github.io](https://daviribeirods.github.io)**
+### 1. 🌐 Full Internationalization Support (EN / PT)
+*   Instant top-bar language toggle between **English (global default)** and **Portuguese**.
+*   Real-time translation of UI copy, headings, project descriptions, tags, and articles.
+*   Automatic language preference persistence across sessions via `localStorage`.
 
-### Recursos Principais (v1.0)
+### 2. 🌌 Interactive Data Network Background (HTML5 Canvas)
+*   Real-time canvas rendering of interactive particle nodes and correlation graphs.
+*   Dynamic node connections that respond seamlessly to mouse cursor movements.
+*   Lightweight, energy-efficient animation respecting user accessibility preferences (`prefers-reduced-motion`).
 
-*   **🎨 Tema Inspirado em Python:** A paleta de cores (azul e amarelo) foi inspirada na identidade visual da linguagem Python, refletindo meu objetivo de me tornar um especialista na tecnologia.
-*   **🌓 Alternador de Tema (Light/Dark):** Permite que o usuário escolha o modo de visualização que preferir, com ícones intuitivos para a troca.
-*   **📱 Layout Responsivo:** O site é totalmente adaptável para diferentes tamanhos de tela, garantindo uma boa experiência em desktops, tablets e celulares.
-*   **🧭 Navegação Fluida:** A barra de navegação utiliza `scroll-spy` para destacar a seção ativa, facilitando a localização do usuário na página.
+### 3. 🏢 Clean, Wide-Feed Architecture (*Wide Cards Feed*)
+*   Replaced multi-page routing with a **unified, uncluttered central feed**.
+*   **Wide 2-Column Hero Section**: Direct executive introduction with profile visual and direct channels for LinkedIn, GitHub, YouTube Shorts, TikTok, Email, and PDF Resume.
+*   **Spacious Horizontal Cards**: Clear emphasis on the business problem, statistical/machine learning methodology, and core tech stack for each initiative.
+
+### 4. 📖 Built-In In-Page Modal Article Reader
+*   Seamless study notes and article reading directly on the homepage without page reloads.
+*   **Wider Reading Container (`1040px`)**: Generous margins, comfortable typography, responsive media scaling, and synchronized bilingual content blocks.
+
+### 5. 🗂️ Decoupled Content Architecture
+*   Projects are centrally managed in a straightforward data file: `_data/projects.yml`.
+*   Study notebook posts and articles are managed as standard Markdown files in `_posts/`.
+*   Category filter tab counters (`All`, `Projects`, `Articles`) compute dynamically via Jekyll/Liquid without requiring manual HTML updates.
+
+### 6. 🌓 Persistent Dark / Light Theme
+*   Elegant high-contrast theme toggle inspired by professional data science and developer tooling.
+*   Theme preference stored and persisted automatically.
 
 ---
 
-## 🛠️ Stack de Tecnologias
+## 🛠️ Technology Stack
 
-Este projeto foi construído utilizando tecnologias web modernas e um conjunto de ferramentas que otimizam o desenvolvimento.
-
-### Front-End
-*   **HTML5**
-*   **CSS3**
-*   **JavaScript (Vanilla)**
-*   **Bootstrap 5** (com o tema "Cosmo" do Bootswatch)
-*   **Bootstrap Icons**
-*   **Devicon** (para os ícones de tecnologia)
-
-### Ferramentas de Desenvolvimento
-*   **Visual Studio Code**
-*   **Git & GitHub**
-*   **Gemini Code Assist**
+*   **Static Site Generator & Templating:** [Jekyll](https://jekyllrb.com/) + [Liquid Engine](https://shopify.github.io/liquid/)
+*   **Front-End & Grid System:** Semantic HTML5, Modern CSS3 (CSS Custom Properties), [Bootstrap 5.3](https://getbootstrap.com/)
+*   **Interactivity & Graphics:** Vanilla JavaScript (ES6+), HTML5 Canvas 2D Context
+*   **Typography:** *Plus Jakarta Sans* (executive headings & branding) & *Inter* (body text)
+*   **Icons:** [Bootstrap Icons](https://icons.getbootstrap.com/) & [Devicon](https://devicon.dev/)
+*   **Hosting & CI/CD:** [GitHub Pages](https://pages.github.com/) with automated deployment on every commit
 
 ---
 
-## 📂 Estrutura e Customização
-
-O projeto foi organizado de forma simples para facilitar a manutenção e futuras atualizações.
+## 📂 Project Structure
 
 ```
-├── index.html                # Página principal que centraliza todas as seções
+├── _config.yml               # Global Jekyll site configuration
+├── _data/
+│   └── projects.yml          # 📌 PROJECTS DATA SOURCE (Add/edit projects easily)
+├── _layouts/
+│   ├── default.html          # Base layout with Header, Footer, Canvas & Modal Reader
+│   └── post.html             # Standalone layout for individual post view
+├── _posts/
+│   └── 2026-03-23-bem-vindo.md # 📌 STUDY NOTES & ARTICLES (Markdown)
 ├── assets/
-│   ├── css/main.css          # Estilos customizados
-│   ├── img/profile.webp      # Imagens do projeto
-│   └── curriculum/curriculo.pdf # Arquivo do currículo
-└── pages/
-    └── projeto1.html         # Template para páginas de detalhes dos projetos
+│   ├── css/
+│   │   └── main.css          # Design system & dark/light theme CSS variables
+│   ├── curriculum/
+│   │   └── curriculo.pdf     # Downloadable resume
+│   ├── img/
+│   │   ├── profile.webp      # Profile portrait photo
+│   │   ├── blog/             # Article cover assets
+│   │   └── projects/         # Project thumbnail assets
+│   └── js/
+│       └── translations.js   # i18n translation dictionary and switcher engine
+├── index.html                # Main landing page (dynamic Liquid rendering)
+├── how_to_add_content.md     # 📖 STEP-BY-STEP GUIDE: How to add new projects & articles
+└── README.md                 # Project documentation
 ```
-
-Se você desejar usar este projeto como base para o seu próprio portfólio, os principais pontos de customização estão no `index.html` (para textos e informações pessoais) e no `assets/css/main.css` (para ajustes de estilo).
 
 ---
 
-## 🗺️ Roadmap (Planos Futuros)
+## ✍️ How to Add New Projects & Articles
 
-Esta é a versão 1.0, e já tenho planos para as próximas atualizações:
+To add new content to the portfolio **without touching HTML or code**, check our dedicated step-by-step guide with copy-paste templates:
 
-- [ ] **Ativar a Seção de Projetos:** Substituir o texto "projetos em andamento" por estudos de caso reais e detalhados.
-- [ ] **Salvar Preferência de Tema:** Implementar uma solução para que a escolha do tema (claro ou escuro) seja salva no navegador do usuário para visitas futuras.
-- [ ] **Criar um Blog Integrado:** Adicionar uma seção de blog para compartilhar aprendizados, o progresso dos projetos e outros insights da área de dados.
+👉 **[Read the Content Management Guide (how_to_add_content.md)](./how_to_add_content.md)**
 
 ---
 
-## 📜 Licença
+## 💻 Local Development
 
-Este projeto está licenciado sob a **Licença MIT**.
+To run the project locally on your machine:
 
-Isso significa que você tem total liberdade para usar, copiar, modificar, e distribuir este código, inclusive para fins comerciais, desde que o aviso de copyright e a permissão da licença original sejam incluídos em qualquer cópia substancial do software.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/daviribeirods/daviribeirods.github.io.git
+   cd daviribeirods.github.io
+   ```
 
-```
-MIT License
+2. **Run Jekyll locally (requires Ruby & Bundler):**
+   ```bash
+   bundle install
+   bundle exec jekyll serve
+   ```
+   Open `http://localhost:4000` in your browser.
 
-Copyright (c) 2026 Davi Ribeiro
+3. **Deployment:**
+   Simply push to the `main` branch. GitHub Pages will build and deploy the changes automatically within seconds!
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+---
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+## 📜 License
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+Distributed under the **MIT License**. See the license file for details.

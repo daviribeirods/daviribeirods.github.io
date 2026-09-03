@@ -1,129 +1,389 @@
 <!DOCTYPE html>
-<html lang="pt-br" data-bs-theme="dark">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: site.title }}</title>
     
-    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 5 & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v=2.0">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v=8.4">
+
+    <!-- External Translations Dictionary -->
+    <script src="{{ '/assets/js/translations.js' | relative_url }}?v=1.0"></script>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#main-navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+<body>
+
+    <!-- Interactive Data Canvas Background -->
+    <canvas id="data-bg-canvas"></canvas>
 
     <!-- Scroll Progress Indicator -->
     <div id="scroll-progress"></div>
 
-    <!-- Sticky Minimal Navbar -->
-    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-custom sticky-top">
-        <div class="container">
-            <a class="navbar-brand navbar-brand-tech" href="{{ '/' | relative_url }}">
-                davi<span class="brand-dot">.</span>ribeiro()
-            </a>
-            <button class="navbar-toggler border-0 shadow-none text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="bi bi-list fs-2"></i>
+    <!-- Minimal Header (Language & Theme Controls) -->
+    <header class="top-nav-minimal">
+        <div class="container main-container d-flex justify-content-end align-items-center gap-2 py-3">
+            <button class="btn-lang-toggle" id="lang-toggle" title="Switch Language (EN / PT)" aria-label="Switch Language">
+                <span id="lang-indicator">EN</span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto gap-2 align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link nav-link-tech" href="{{ '/' | relative_url }}#home">Início</a></li>
-                    <li class="nav-item"><a class="nav-link nav-link-tech" href="{{ '/' | relative_url }}#projetos">Projetos</a></li>
-                    <li class="nav-item"><a class="nav-link nav-link-tech" href="{{ '/' | relative_url }}#artigos">Artigos</a></li>
-                    <li class="nav-item"><a class="nav-link nav-link-tech" href="{{ '/' | relative_url }}#contato">Contato</a></li>
-                    <li class="nav-item ms-lg-2">
-                        <button class="btn-theme-toggle" id="theme-toggle" title="Alternar tema">
-                            <i class="bi bi-moon-stars-fill" id="theme-icon"></i>
-                        </button>
-                    </li>
-                </ul>
-            </div>
+            <button class="btn-theme-toggle" id="theme-toggle" title="Alternar tema" aria-label="Alternar tema claro/escuro">
+                <i class="bi bi-moon-stars" id="theme-icon"></i>
+            </button>
         </div>
-    </nav>
+    </header>
 
-    <!-- Main Content -->
+    <!-- Main Page Content -->
     {{ content }}
 
-    <!-- Footer -->
-    <footer class="footer-tech text-center">
-        <div class="container">
-            <div class="d-flex flex-wrap justify-content-center gap-3 mb-3">
-                <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="text-muted text-decoration-none hover-white"><i class="bi bi-linkedin me-1"></i> LinkedIn</a>
-                <span class="text-muted">•</span>
-                <a href="https://github.com/daviribeirods" target="_blank" class="text-muted text-decoration-none hover-white"><i class="bi bi-github me-1"></i> GitHub</a>
-                <span class="text-muted">•</span>
-                <a href="https://x.com/daviribeirods" target="_blank" class="text-muted text-decoration-none hover-white"><i class="bi bi-twitter-x me-1"></i> Twitter/X</a>
-                <span class="text-muted">•</span>
-                <a href="https://www.youtube.com/@daviribeirods" target="_blank" class="text-muted text-decoration-none hover-white"><i class="bi bi-youtube me-1"></i> YouTube</a>
-                <span class="text-muted">•</span>
-                <a href="https://medium.com/@davidatascientist" target="_blank" class="text-muted text-decoration-none hover-white"><i class="bi bi-medium me-1"></i> Medium</a>
+    <!-- In-Page Article Modal Reader -->
+    <div id="article-reader-modal" class="article-modal-backdrop" aria-hidden="true" style="display: none;">
+        <div class="article-modal-container">
+            <div class="article-modal-header">
+                <div class="d-flex align-items-center gap-2 text-muted small">
+                    <i class="bi bi-journal-text text-primary"></i>
+                    <span id="modal-article-date"></span>
+                </div>
+                <button class="btn-close-modal" id="modal-close-btn" aria-label="Fechar modal">
+                    <i class="bi bi-x-lg"></i>
+                </button>
             </div>
-            <p class="mb-0 small text-subtle font-monospace">© 2026 Davi Ribeiro • Construído com foco em Data & Performance</p>
+            <div class="article-modal-body">
+                <h1 id="modal-article-title" class="article-modal-title"></h1>
+                <div id="modal-article-content" class="article-modal-prose"></div>
+            </div>
+            <div class="article-modal-footer text-center pt-4">
+                <button class="btn-secondary-corporate" id="modal-close-bottom-btn" data-i18n="modalBackBtn">
+                    <i class="bi bi-arrow-left"></i> Back to Portfolio
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minimal Clean Footer -->
+    <footer class="footer-minimal text-center py-5">
+        <div class="container main-container">
+            <div class="d-flex flex-wrap justify-content-center gap-3 mb-3">
+                <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="footer-link"><i class="bi bi-linkedin me-1"></i> LinkedIn</a>
+                <span class="footer-dot">•</span>
+                <a href="https://github.com/daviribeirods" target="_blank" class="footer-link"><i class="bi bi-github me-1"></i> GitHub</a>
+                <span class="footer-dot">•</span>
+                <a href="https://www.youtube.com/@davisantos_py" target="_blank" class="footer-link"><i class="bi bi-youtube me-1 text-danger"></i> YouTube</a>
+                <span class="footer-dot">•</span>
+                <a href="https://www.tiktok.com/@davisantos_py" target="_blank" class="footer-link"><i class="bi bi-tiktok me-1"></i> TikTok</a>
+                <span class="footer-dot">•</span>
+                <a href="mailto:davidatascientist@gmail.com" class="footer-link"><i class="bi bi-envelope-fill me-1"></i> Email</a>
+            </div>
+            <p class="mb-0 small text-subtle font-monospace" data-i18n="footerCopyright">
+                © 2026 Davi Santos • Data Science & Predictive Modeling
+            </p>
         </div>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Theme & Scroll Script -->
+    <!-- Scripts: Theme, Language, Modal & Canvas Data Animation -->
     <script>
-        // 1. Theme Management
-        const btn = document.getElementById('theme-toggle');
-        const icon = document.getElementById('theme-icon');
         const html = document.documentElement;
 
-        const savedTheme = localStorage.getItem('theme') || 'dark';
+        // 1. Language Management with External Dictionary (Default: English)
+        let currentLang = localStorage.getItem('user_lang') || 'en';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            if (typeof applyI18n === 'function') {
+                applyI18n(lang);
+            }
+        }
+
+        // Initialize language
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLanguage(currentLang);
+
+            const langBtn = document.getElementById('lang-toggle');
+            if (langBtn) {
+                langBtn.addEventListener('click', () => {
+                    const newLang = currentLang === 'en' ? 'pt' : 'en';
+                    switchLanguage(newLang);
+                });
+            }
+        });
+
+        // 2. Theme Management (Default: Light)
+        const btn = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
         html.setAttribute('data-bs-theme', savedTheme);
         updateThemeIcon(savedTheme);
 
         function updateThemeIcon(theme) {
             if (theme === 'dark') {
-                icon.className = 'bi bi-moon-stars-fill';
-            } else {
                 icon.className = 'bi bi-sun-fill';
+            } else {
+                icon.className = 'bi bi-moon-stars';
             }
         }
 
-        btn.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-bs-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-bs-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
+        if (btn) {
+            btn.addEventListener('click', () => {
+                const currentTheme = html.getAttribute('data-bs-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-bs-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+        }
 
-        // 2. Scroll Progress Bar
+        // 3. Scroll Progress Bar
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
+            const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
             const progressBar = document.getElementById('scroll-progress');
             if (progressBar) {
                 progressBar.style.width = scrollPercent + '%';
             }
         });
 
-        // 3. Smooth IntersectionObserver Scroll Reveal
+        // 4. Smooth Scroll Reveal & Feed Filters
         document.addEventListener('DOMContentLoaded', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
+                        entry.target.classList.add('is-revealed');
+                        obs.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.12,
+                threshold: 0.08,
                 rootMargin: '0px 0px -40px 0px'
             });
 
-            reveals.forEach(el => observer.observe(el));
+            revealElements.forEach(el => observer.observe(el));
+
+            // Feed Filter Tabs (Todos, Projetos, Artigos)
+            const filterBtns = document.querySelectorAll('.feed-filter-btn');
+            const cards = document.querySelectorAll('.project-card-wide');
+
+            if (filterBtns.length > 0) {
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        filterBtns.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        const targetFilter = btn.getAttribute('data-filter');
+
+                        cards.forEach(card => {
+                            const cardCategory = card.getAttribute('data-category');
+                            if (targetFilter === 'all' || cardCategory === targetFilter) {
+                                card.style.display = 'block';
+                                setTimeout(() => {
+                                    card.classList.add('is-revealed');
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0)';
+                                }, 30);
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            }
+
+            // 5. In-Page Article Modal Reader
+            const modalBackdrop = document.getElementById('article-reader-modal');
+            const modalTitle = document.getElementById('modal-article-title');
+            const modalDate = document.getElementById('modal-article-date');
+            const modalContent = document.getElementById('modal-article-content');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const modalCloseBottomBtn = document.getElementById('modal-close-bottom-btn');
+            const articleTriggers = document.querySelectorAll('.trigger-article-modal');
+
+            function syncModalLanguage(articleId, lang) {
+                const template = document.getElementById('template-' + articleId);
+                if (!template || !modalBackdrop) return;
+
+                const activeLang = (lang === 'pt' || lang === 'en') ? lang : 'en';
+                const title = template.getAttribute('data-title-' + activeLang) || template.getAttribute('data-title-en') || template.getAttribute('data-title-pt');
+                const date = template.getAttribute('data-date-' + activeLang) || template.getAttribute('data-date-en') || template.getAttribute('data-date-pt');
+
+                if (modalTitle && title) modalTitle.textContent = title;
+                if (modalDate && date) modalDate.textContent = date;
+
+                // Sync bilingual content blocks if present
+                const isEn = activeLang === 'en';
+                const enBlocks = modalContent.querySelectorAll('.lang-block-en');
+                const ptBlocks = modalContent.querySelectorAll('.lang-block-pt');
+
+                if (enBlocks.length > 0 || ptBlocks.length > 0) {
+                    enBlocks.forEach(b => b.style.display = isEn ? 'block' : 'none');
+                    ptBlocks.forEach(b => b.style.display = isEn ? 'none' : 'block');
+                }
+            }
+
+            window.syncModalLanguage = syncModalLanguage;
+
+            function openArticleModal(articleId) {
+                const template = document.getElementById('template-' + articleId);
+                if (!template || !modalBackdrop) return;
+
+                modalBackdrop.setAttribute('data-active-article-id', articleId);
+                modalContent.innerHTML = template.innerHTML;
+
+                syncModalLanguage(articleId, currentLang);
+
+                modalBackdrop.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    modalBackdrop.classList.add('active');
+                }, 10);
+            }
+
+            function closeArticleModal() {
+                if (!modalBackdrop) return;
+                modalBackdrop.classList.remove('active');
+                modalBackdrop.removeAttribute('data-active-article-id');
+                setTimeout(() => {
+                    modalBackdrop.style.display = 'none';
+                    document.body.style.overflow = '';
+                }, 250);
+            }
+
+            articleTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const articleId = trigger.getAttribute('data-article-id');
+                    openArticleModal(articleId);
+                });
+            });
+
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeArticleModal);
+            if (modalCloseBottomBtn) modalCloseBottomBtn.addEventListener('click', closeArticleModal);
+
+            if (modalBackdrop) {
+                modalBackdrop.addEventListener('click', (e) => {
+                    if (e.target === modalBackdrop) {
+                        closeArticleModal();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalBackdrop && modalBackdrop.classList.contains('active')) {
+                    closeArticleModal();
+                }
+            });
         });
+
+        // 6. Interactive Canvas: Connected Data Nodes & Correlations
+        (function() {
+            const canvas = document.getElementById('data-bg-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width, height, particles = [];
+            let mouse = { x: null, y: null, maxDist: 140 };
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                initParticles();
+            }
+
+            function initParticles() {
+                particles = [];
+                const count = Math.min(Math.floor((width * height) / 16000), 55);
+                for (let i = 0; i < count; i++) {
+                    particles.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        vx: (Math.random() - 0.5) * 0.45,
+                        vy: (Math.random() - 0.5) * 0.45,
+                        radius: Math.random() * 2 + 1.5
+                    });
+                }
+            }
+
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            });
+
+            window.addEventListener('mouseleave', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+
+            window.addEventListener('resize', resize);
+            resize();
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                const isDark = html.getAttribute('data-bs-theme') === 'dark';
+                const nodeColor = isDark ? 'rgba(96, 165, 250, 0.4)' : 'rgba(37, 99, 235, 0.28)';
+                const lineColor = isDark ? 'rgba(96, 165, 250,' : 'rgba(37, 99, 235,';
+
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0 || p.x > width) p.vx *= -1;
+                    if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                    // Draw Node
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = nodeColor;
+                    ctx.fill();
+
+                    // Connect to nearby nodes
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const p2 = particles[j];
+                        const dx = p.x - p2.x;
+                        const dy = p.y - p2.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < 130) {
+                            const alpha = (1 - dist / 130) * (isDark ? 0.18 : 0.12);
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = lineColor + alpha + ')';
+                            ctx.lineWidth = 0.9;
+                            ctx.stroke();
+                        }
+                    }
+
+                    // Connect to mouse
+                    if (mouse.x !== null && mouse.y !== null) {
+                        const mdx = p.x - mouse.x;
+                        const mdy = p.y - mouse.y;
+                        const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+                        if (mdist < mouse.maxDist) {
+                            const mAlpha = (1 - mdist / mouse.maxDist) * (isDark ? 0.35 : 0.25);
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(mouse.x, mouse.y);
+                            ctx.strokeStyle = lineColor + mAlpha + ')';
+                            ctx.lineWidth = 1.1;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        })();
     </script>
 </body>
 </html>

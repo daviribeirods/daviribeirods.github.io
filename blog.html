@@ -3,33 +3,49 @@ layout: default
 title: Davi Ribeiro | Caderno Aberto de Dados & Tecnologia
 ---
 
-<main class="container py-5 mt-4 min-vh-100">
-    <div class="row justify-content-center mb-5">
-        <div class="col-lg-8 text-center">
-            <span class="section-tag reveal">// CADERNO ABERTO</span>
-            <h1 class="section-heading reveal delay-1">Artigos & Insights</h1>
-            <p class="section-subtext reveal delay-1">Estudos, anotações de algoritmos, detecção de anomalias e reflexões práticas sobre Ciência de Dados.</p>
-        </div>
+<main class="main-container py-5 min-vh-100">
+    <div class="section-header-wide mb-4">
+        <h1 class="section-title-wide">Artigos & Caderno Aberto</h1>
+        <p class="section-desc-wide">Ensaios, aprendizados e documentação técnica sobre Ciência de Dados, Engenharia e IA.</p>
     </div>
 
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            {% for post in site.posts %}
-            <a href="{{ post.url | relative_url }}" class="article-row-card reveal delay-1">
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="article-date">{{ post.date | date: "%d/%m/%Y" }}</span>
-                    <span class="text-muted small font-monospace"><i class="bi bi-clock me-1"></i> Leitura rápida</span>
+    <div>
+        {% for post in site.posts %}
+        <article class="project-card-wide">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-8">
+                    <span class="project-tag article">Artigo • Caderno Aberto</span>
+                    <h2 class="project-title-wide">
+                        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-reset">{{ post.title }}</a>
+                    </h2>
+                    <p class="project-desc-wide">
+                        {{ post.excerpt | strip_html | truncatewords: 32 }}
+                    </p>
+                    <a href="{{ post.url | relative_url }}" class="project-action-link">
+                        Ler Artigo Completo <i class="bi bi-arrow-right"></i>
+                    </a>
                 </div>
-                <h2 class="article-title">{{ post.title }}</h2>
-                <p class="article-snippet">{{ post.excerpt | strip_html | truncatewords: 22 }}</p>
-            </a>
-            {% endfor %}
-
-            <div class="text-center mt-5 reveal delay-2">
-                <a href="{{ '/' | relative_url }}" class="btn-tech-secondary">
-                    <i class="bi bi-arrow-left"></i> Voltar ao Portfólio
-                </a>
+                <div class="col-lg-4">
+                    <div class="metrics-panel-box">
+                        <div class="metrics-panel-title">Publicação</div>
+                        <div class="d-flex align-items-center gap-2 text-muted mb-2">
+                            <i class="bi bi-calendar3 text-primary"></i>
+                            <span>{{ post.date | date: "%d/%m/%Y" }}</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 text-muted">
+                            <i class="bi bi-person text-primary"></i>
+                            <span>Davi Ribeiro</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </article>
+        {% endfor %}
+
+        <div class="text-center mt-5">
+            <a href="{{ '/' | relative_url }}" class="btn-secondary-corporate">
+                <i class="bi bi-arrow-left"></i> Voltar ao Portfólio
+            </a>
         </div>
     </div>
 </main>

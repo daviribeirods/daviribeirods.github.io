@@ -1,344 +1,244 @@
 ---
 layout: default
-title: Davi Ribeiro | Cientista de Dados & Risk Systems
+title: Davi Santos | Data Scientist & Machine Learning
 ---
 
-<!-- =========================================================================
-     1. HERO SECTION (Centered + Stylized AI Avatar + Status Tag)
-     ========================================================================= -->
-<header id="home" class="hero-section text-center">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-9">
+{% assign total_projects = site.data.projects.size | default: 0 %}
+{% assign total_articles = site.posts.size | default: 0 %}
+{% assign total_all = total_projects | plus: total_articles %}
+
+<main class="main-container">
+
+    <!-- =========================================================================
+         1. HERO SECTION (Wide 2-Column: Content Left, Original Photo Right)
+         ========================================================================= -->
+    <section class="hero-wide">
+        <div class="row align-items-center g-4 g-lg-5">
+            
+            <!-- Left Column: Content & Actions -->
+            <div class="col-lg-7">
+                <h1 class="hero-title" data-i18n="heroName">Davi Santos</h1>
+                <div class="hero-subtitle" data-i18n="heroSubtitle">Data Scientist | Machine Learning & Predictive Modeling</div>
                 
-                <!-- Availability Status Tag -->
-                <div class="reveal is-visible">
-                    <div class="status-pill">
-                        <span class="status-dot"></span>
-                        Disponível para novas oportunidades • Data Scientist / Risk
-                    </div>
-                </div>
-
-                <!-- Main Headline & Role -->
-                <h1 class="hero-title reveal is-visible delay-1">Davi Ribeiro</h1>
-                <div class="hero-role reveal is-visible delay-1">&lt;Cientista de Dados | Machine Learning & Risk Systems /&gt;</div>
-
-                <!-- Centered Stylized AI Avatar Ring -->
-                <div class="avatar-halo-container reveal is-visible delay-2">
-                    <div class="avatar-glow-ring"></div>
-                    <div class="avatar-img-frame">
-                        <img src="{{ '/assets/img/profile.webp' | relative_url }}" alt="Davi Ribeiro - Cientista de Dados" class="avatar-img">
-                    </div>
-                </div>
-
-                <!-- Core Impact Statement -->
-                <p class="hero-bio reveal is-visible delay-2">
-                    Especialista em <strong>Detecção de Fraudes</strong>, <strong>Modelagem Preditiva</strong> e <strong>Pipelines de IA em Escala</strong>. 
-                    Uno rigor estatístico e engenharia de software para transformar dados complexos em sistemas seguros e de alto impacto de negócio.
+                <p class="hero-bio" data-i18n="heroBio">
+                    Hi! I’m Davi. This is where I document my hands-on <strong>Data Science</strong> projects, <strong>Machine Learning</strong> studies, and notes on what I’m actively learning and building.
                 </p>
 
-                <!-- Social Media Pills Bar -->
-                <div class="social-pills-wrap reveal is-visible delay-3">
-                    <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="social-pill" title="LinkedIn">
-                        <i class="bi bi-linkedin text-primary"></i> LinkedIn
+                <div class="hero-actions">
+                    <a href="mailto:davidatascientist@gmail.com" class="btn-primary-corporate" data-i18n="getInTouch">
+                        <i class="bi bi-envelope-fill"></i> Get in Touch
                     </a>
-                    <a href="https://github.com/daviribeirods" target="_blank" class="social-pill" title="GitHub">
-                        <i class="bi bi-github"></i> GitHub
+                    <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="social-icon-btn" title="LinkedIn" aria-label="LinkedIn">
+                        <i class="bi bi-linkedin text-primary"></i>
                     </a>
-                    <a href="https://x.com/daviribeirods" target="_blank" class="social-pill" title="Twitter/X">
-                        <i class="bi bi-twitter-x"></i> Twitter/X
+                    <a href="https://github.com/daviribeirods" target="_blank" class="social-icon-btn" title="GitHub" aria-label="GitHub">
+                        <i class="bi bi-github"></i>
                     </a>
-                    <a href="https://www.youtube.com/@daviribeirods" target="_blank" class="social-pill" title="YouTube">
-                        <i class="bi bi-youtube text-danger"></i> YouTube
+                    <a href="https://www.youtube.com/@davisantos_py" target="_blank" class="social-icon-btn" title="YouTube Shorts" aria-label="YouTube Shorts">
+                        <i class="bi bi-youtube text-danger"></i>
                     </a>
-                    <a href="https://medium.com/@davidatascientist" target="_blank" class="social-pill" title="Medium">
-                        <i class="bi bi-medium text-success"></i> Medium
+                    <a href="https://www.tiktok.com/@davisantos_py" target="_blank" class="social-icon-btn" title="TikTok" aria-label="TikTok">
+                        <i class="bi bi-tiktok"></i>
                     </a>
-                    <a href="mailto:davidatascientist@gmail.com" class="social-pill" title="Email">
-                        <i class="bi bi-envelope-fill text-warning"></i> Email
-                    </a>
-                </div>
-
-                <!-- Action CTAs -->
-                <div class="d-flex flex-wrap justify-content-center gap-3 reveal is-visible delay-3">
-                    <a href="#projetos" class="btn-tech-primary">
-                        <i class="bi bi-arrow-down-circle"></i> Explorar Projetos
-                    </a>
-                    <a href="assets/curriculum/curriculo.pdf" target="_blank" rel="noopener noreferrer" class="btn-tech-secondary">
-                        <i class="bi bi-file-earmark-pdf"></i> Ver Currículo
+                    <a href="{{ '/assets/curriculum/curriculo.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Currículo em PDF" aria-label="CV / Resume">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
                     </a>
                 </div>
-
             </div>
-        </div>
-    </div>
-</header>
 
-<!-- =========================================================================
-     2. FEATURED PROJECTS (Full-Width Case Study Cards with Real Metrics)
-     ========================================================================= -->
-<section id="projetos" class="py-5">
-    <div class="container">
-        <div class="row justify-content-center text-center mb-4">
-            <div class="col-lg-8">
-                <span class="section-tag reveal">// PROJETOS EM DESTAQUE</span>
-                <h2 class="section-heading reveal delay-1">Modelagem Preditiva & Risco Financeiro</h2>
-                <p class="section-subtext reveal delay-1">
-                    Soluções de dados desenvolvidas com foco em retorno sobre investimento, combate a fraudes e robustez em produção.
-                </p>
+            <!-- Right Column: Avatar with Soft Ground Shadow (Opção C) -->
+            <div class="col-lg-5">
+                <div class="hero-shadow-wrapper">
+                    <div class="hero-photo-ambient-glow"></div>
+                    <img src="{{ '/assets/img/profile.webp' | relative_url }}?v=3.1" alt="Davi Santos - Data Scientist" class="hero-shadow-avatar">
+                    <div class="hero-ground-shadow"></div>
+                </div>
             </div>
+
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         2. WORK FEED (Data-Driven: Projects & Articles)
+         ========================================================================= -->
+    <section class="projects-section">
+        
+        <!-- Filter Tabs (Card-styled with dynamic counts) -->
+        <div class="feed-filter-bar">
+            <button class="feed-filter-btn active" data-filter="all" data-i18n="allFilter">
+                <i class="bi bi-grid-fill"></i> All <span class="filter-count">{{ total_all }}</span>
+            </button>
+            <button class="feed-filter-btn" data-filter="project" data-i18n="projectsFilter">
+                <i class="bi bi-code-slash"></i> Projects <span class="filter-count">{{ total_projects }}</span>
+            </button>
+            <button class="feed-filter-btn" data-filter="article" data-i18n="articlesFilter">
+                <i class="bi bi-journal-text"></i> Articles <span class="filter-count">{{ total_articles }}</span>
+            </button>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-
-                <!-- Case Study Card 1: Detecção de Fraudes -->
-                <div class="project-card reveal">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
-                        <span class="project-category">FRAUD PREVENTION • MACHINE LEARNING</span>
-                        <span class="badge bg-dark-subtle border border-secondary-subtle text-muted font-monospace small">Produção</span>
-                    </div>
-                    <h3 class="project-title">Sistema Preditivo de Detecção de Fraudes com XGBoost & SHAP</h3>
-                    <p class="project-desc">
-                        Arquitetura de modelagem para identificação de transações fraudulentas sob cenários de classes extremamente desbalanceadas. 
-                        Engenharia de features com agregação histórica e implementação de explicabilidade auditável (XAI via SHAP) para suporte a decisões de risco em tempo hábil.
+        <!-- ================= PROJECTS LIST (From _data/projects.yml) ================= -->
+        {% for proj in site.data.projects %}
+        <article class="project-card-wide reveal-on-scroll" data-category="project">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-7">
+                    <h2 class="project-title-wide" data-en="{{ proj.title_en | default: proj.title_pt }}" data-pt="{{ proj.title_pt | default: proj.title_en }}">
+                        {{ proj.title_en | default: proj.title_pt }}
+                    </h2>
+                    <p class="project-desc-wide" data-en="{{ proj.desc_en | default: proj.desc_pt }}" data-pt="{{ proj.desc_pt | default: proj.desc_en }}">
+                        {{ proj.desc_en | default: proj.desc_pt }}
                     </p>
+                </div>
+                
+                <!-- Graphic / Image Preview Thumbnail -->
+                <div class="col-lg-5">
+                    <div class="project-thumb-box">
+                        <span class="project-thumb-tag" data-en="{{ proj.tag_en | default: proj.tag_pt }}" data-pt="{{ proj.tag_pt | default: proj.tag_en }}">
+                            {{ proj.tag_en | default: proj.tag_pt }}
+                        </span>
 
-                    <!-- Metrics Badges -->
-                    <div class="metrics-grid">
-                        <div class="metric-pill highlight">
-                            <i class="bi bi-graph-up-arrow"></i> 3x Volume de Detecção
-                        </div>
-                        <div class="metric-pill cyan">
-                            <i class="bi bi-bullseye"></i> 0.95 ROC-AUC
-                        </div>
-                        <div class="metric-pill highlight">
-                            <i class="bi bi-shield-check"></i> -40% Falsos Positivos
-                        </div>
-                        <div class="metric-pill amber">
-                            <i class="bi bi-stopwatch"></i> &lt;45ms Latência de Score
-                        </div>
-                    </div>
-
-                    <!-- Tech Stack Pills -->
-                    <div class="mb-4">
-                        <span class="tech-pill"><i class="devicon-python-plain text-primary"></i> Python</span>
-                        <span class="tech-pill"><i class="devicon-scikitlearn-plain text-warning"></i> XGBoost</span>
-                        <span class="tech-pill"><i class="bi bi-diagram-3-fill text-info"></i> SHAP (XAI)</span>
-                        <span class="tech-pill"><i class="devicon-apachespark-original text-danger"></i> PySpark / Snowpark</span>
-                        <span class="tech-pill"><i class="devicon-azuresqldatabase-plain text-info"></i> SQL Avançado</span>
-                        <span class="tech-pill"><i class="devicon-fastapi-plain text-success"></i> FastAPI</span>
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="https://github.com/daviribeirods" target="_blank" class="btn-tech-primary">
-                            <i class="bi bi-github"></i> Ver Código no GitHub
-                        </a>
-                        <a href="#contato" class="btn-tech-secondary">
-                            <i class="bi bi-chat-dots"></i> Discutir Arquitetura
-                        </a>
+                        {% if proj.image %}
+                            <img src="{{ proj.image | relative_url }}" alt="{{ proj.title_en }}" class="project-card-image">
+                        {% elsif proj.svg_type == 'synthetic' %}
+                            <svg viewBox="0 0 280 110" width="100%" height="90" style="overflow: visible;">
+                                <defs>
+                                    <linearGradient id="gradSynthClean" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25" />
+                                        <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.0" />
+                                    </linearGradient>
+                                </defs>
+                                <line x1="10" y1="95" x2="270" y2="95" stroke="currentColor" opacity="0.12" />
+                                <path d="M 10 95 Q 45 92, 75 70 T 140 25 T 205 78 T 270 95 Z" fill="url(#gradSynthClean)" />
+                                <path d="M 10 95 Q 45 92, 75 70 T 140 25 T 205 78 T 270 95" fill="none" stroke="#2563EB" stroke-width="2.5" />
+                                <circle cx="140" cy="25" r="4.5" fill="#EF4444" />
+                                <circle cx="140" cy="25" r="9" fill="#EF4444" opacity="0.2" />
+                                <text x="152" y="22" fill="#EF4444" font-size="10" font-weight="700" data-en="Fraud Anomaly" data-pt="Anomalia Sintética">Fraud Anomaly</text>
+                                <text x="140" y="105" fill="currentColor" opacity="0.5" font-size="9" text-anchor="middle" data-en="Calibrated Transaction Distribution" data-pt="Distribuição Transacional Calibrada">Calibrated Transaction Distribution</text>
+                            </svg>
+                        {% elsif proj.svg_type == 'pricing' %}
+                            <svg viewBox="0 0 280 110" width="100%" height="90" style="overflow: visible;">
+                                <defs>
+                                    <linearGradient id="gradPricing" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#10B981" stop-opacity="0.25" />
+                                        <stop offset="100%" stop-color="#10B981" stop-opacity="0.0" />
+                                    </linearGradient>
+                                </defs>
+                                <line x1="10" y1="95" x2="270" y2="95" stroke="currentColor" opacity="0.12" />
+                                <path d="M 15 20 Q 80 50, 150 75 T 265 92" fill="none" stroke="#059669" stroke-width="2.5" />
+                                <path d="M 60 95 Q 140 18, 220 95 Z" fill="url(#gradPricing)" />
+                                <path d="M 60 95 Q 140 18, 220 95" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="3,3" />
+                                <circle cx="140" cy="18" r="4.5" fill="#10B981" />
+                                <text x="140" y="10" fill="#10B981" font-size="10" font-weight="700" text-anchor="middle" data-en="Optimal Revenue Point" data-pt="Ponto Ótimo de Receita">Optimal Revenue Point</text>
+                                <text x="140" y="105" fill="currentColor" opacity="0.5" font-size="9" text-anchor="middle" data-en="Demand Curve & Elasticity" data-pt="Curva de Demanda & Elasticidade">Demand Curve & Elasticity</text>
+                            </svg>
+                        {% else %}
+                            <div class="project-thumb-placeholder py-3">
+                                <i class="bi bi-cpu text-primary" style="font-size: 2.5rem;"></i>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
-
-                <!-- Case Study Card 2: Engenharia de Dados & Snowflake -->
-                <div class="project-card reveal delay-1">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
-                        <span class="project-category">DATA ENGINEERING • CLOUD & FINOPS</span>
-                        <span class="badge bg-dark-subtle border border-secondary-subtle text-muted font-monospace small">Infraestrutura</span>
-                    </div>
-                    <h3 class="project-title">Migração Massiva de Dados Analíticos & Otimização FinOps</h3>
-                    <p class="project-desc">
-                        Construção e execução de pipelines em batch para migração de infraestrutura legada para Snowflake, 
-                        desenvolvimento de web crawlers em larga escala para estruturação de dados e governança de queries resultando em redução consistente de custos em Cloud.
-                    </p>
-
-                    <!-- Metrics Badges -->
-                    <div class="metrics-grid">
-                        <div class="metric-pill highlight">
-                            <i class="bi bi-currency-dollar"></i> -10% Custos Cloud (FinOps)
-                        </div>
-                        <div class="metric-pill cyan">
-                            <i class="bi bi-database-check"></i> Milhões de Registros Migrados
-                        </div>
-                        <div class="metric-pill amber">
-                            <i class="bi bi-check-circle"></i> 100% Integridade de Schema
-                        </div>
-                    </div>
-
-                    <!-- Tech Stack Pills -->
-                    <div class="mb-4">
-                        <span class="tech-pill"><i class="devicon-python-plain text-primary"></i> Python</span>
-                        <span class="tech-pill"><i class="devicon-azuresqldatabase-plain text-info"></i> Snowflake SQL</span>
-                        <span class="tech-pill"><i class="devicon-amazonwebservices-plain-wordmark text-warning"></i> AWS</span>
-                        <span class="tech-pill"><i class="devicon-docker-plain text-primary"></i> Docker</span>
-                        <span class="tech-pill"><i class="devicon-streamlit-plain text-danger"></i> Streamlit</span>
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="https://github.com/daviribeirods" target="_blank" class="btn-tech-primary">
-                            <i class="bi bi-github"></i> Repositório do Projeto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Case Study Card 3: Agentes de IA & RAG -->
-                <div class="project-card reveal delay-2">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
-                        <span class="project-category">GENERATIVE AI • LLM ORCHESTRATION</span>
-                        <span class="badge bg-dark-subtle border border-secondary-subtle text-muted font-monospace small">AI Systems</span>
-                    </div>
-                    <h3 class="project-title">Pipelines de RAG & Agentes Autônomos com LLMs Corporativos</h3>
-                    <p class="project-desc">
-                        Desenvolvimento e orquestração de agentes inteligentes para consulta contextual em bases documentais corporativas. 
-                        Integração multi-LLM (OpenAI, Gemini, Anthropic) com validação de schemas em tempo real e deploys automatizados via CI/CD.
-                    </p>
-
-                    <!-- Metrics Badges -->
-                    <div class="metrics-grid">
-                        <div class="metric-pill cyan">
-                            <i class="bi bi-cpu"></i> Orquestração Multi-LLM
-                        </div>
-                        <div class="metric-pill highlight">
-                            <i class="bi bi-lightning-charge"></i> FastAPI em Alta Disponibilidade
-                        </div>
-                        <div class="metric-pill amber">
-                            <i class="bi bi-git"></i> CI/CD Automatizado (GitHub Actions)
-                        </div>
-                    </div>
-
-                    <!-- Tech Stack Pills -->
-                    <div class="mb-4">
-                        <span class="tech-pill"><i class="devicon-python-plain text-primary"></i> Python</span>
-                        <span class="tech-pill"><i class="bi bi-robot text-info"></i> OpenAI / Gemini / Claude</span>
-                        <span class="tech-pill"><i class="devicon-fastapi-plain text-success"></i> FastAPI</span>
-                        <span class="tech-pill"><i class="devicon-githubactions-plain text-white"></i> GitHub Actions</span>
-                        <span class="tech-pill"><i class="devicon-docker-plain text-primary"></i> Docker</span>
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="https://github.com/daviribeirods" target="_blank" class="btn-tech-primary">
-                            <i class="bi bi-github"></i> Explorar Implementações
-                        </a>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </div>
-</section>
 
-<!-- =========================================================================
-     3. WRITING & BLOG FEED (Scroll-First Direct Insights)
-     ========================================================================= -->
-<section id="artigos" class="py-5">
-    <div class="container">
-        <div class="row justify-content-center text-center mb-4">
-            <div class="col-lg-8">
-                <span class="section-tag reveal">// CADERNO ABERTO & INSIGHTS</span>
-                <h2 class="section-heading reveal delay-1">Artigos & Análises Técnicas</h2>
-                <p class="section-subtext reveal delay-1">
-                    Documentando o processo prático de modelagem, algoritmos, prevenção a fraudes e desafios no mundo real dos dados.
-                </p>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                {% if site.posts.size > 0 %}
-                    {% for post in site.posts limit: 3 %}
-                    <a href="{{ post.url | relative_url }}" class="article-row-card reveal delay-1">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="article-date">{{ post.date | date: "%d/%m/%Y" }}</span>
-                            <span class="text-muted small font-monospace"><i class="bi bi-book me-1"></i> Artigo</span>
-                        </div>
-                        <h4 class="article-title">{{ post.title }}</h4>
-                        <p class="article-snippet">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
-                    </a>
+            <!-- Card Bottom Bar: Tech Stack & Action Links -->
+            <div class="card-bottom-bar">
+                <div class="stack-pill-group">
+                    {% for tech in proj.techs %}
+                    <span class="stack-pill">
+                        {% if tech.icon %}<i class="{{ tech.icon }}"></i>{% endif %} {{ tech.name }}
+                    </span>
                     {% endfor %}
-                {% else %}
-                    <div class="article-row-card reveal">
-                        <span class="article-date">Em Breve</span>
-                        <h4 class="article-title">Detecção de Fraudes com Dados Desbalanceados: Técnicas e Armadilhas</h4>
-                        <p class="article-snippet">Um guia prático sobre como balancear precisão e recall em fluxos transacionais de alto volume.</p>
-                    </div>
+                </div>
+                {% if proj.link_url %}
+                <a href="{{ proj.link_url }}" target="_blank" class="project-action-link" data-en="{{ proj.link_text_en | default: 'View Project' }} <i class='bi bi-arrow-right'></i>" data-pt="{{ proj.link_text_pt | default: 'Ver Projeto' }} <i class='bi bi-arrow-right'></i>">
+                    {{ proj.link_text_en | default: 'View Project' }} <i class="bi bi-arrow-right"></i>
+                </a>
                 {% endif %}
-
-                <div class="text-center mt-4 reveal delay-2">
-                    <a href="{{ '/blog.html' | relative_url }}" class="btn-tech-secondary">
-                        <i class="bi bi-journal-text"></i> Ver Todos os Artigos
-                    </a>
-                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </article>
+        {% endfor %}
 
-<!-- =========================================================================
-     4. FREELANCE & CONTACT SECTION
-     ========================================================================= -->
-<section id="contato" class="py-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
+        <!-- ================= ARTICLES LIST (From _posts/*.md) ================= -->
+        {% for post in site.posts %}
+        <article class="project-card-wide reveal-on-scroll" data-category="article">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-7">
+                    <h2 class="project-title-wide">
+                        <a href="#" class="trigger-article-modal text-decoration-none text-reset" data-article-id="{{ forloop.index }}" data-en="{{ post.title_en | default: post.title }}" data-pt="{{ post.title_pt | default: post.title }}">
+                            {{ post.title_en | default: post.title }}
+                        </a>
+                    </h2>
+                    <p class="project-desc-wide" data-en="{{ post.desc_en | default: post.desc_pt }}" data-pt="{{ post.desc_pt | default: post.desc_en }}">
+                        {{ post.desc_en | default: post.desc_pt }}
+                    </p>
+                </div>
                 
-                <!-- Freelance / Consulting Box -->
-                <div class="services-card reveal mb-5">
-                    <div class="services-badge-chip">
-                        <i class="bi bi-lightning-charge-fill"></i> DISPONÍVEL PARA CONSULTORIA & FREELANCE
-                    </div>
-                    <h3 class="fw-bold mb-3">Precisa de Automação ou Soluções com IA?</h3>
-                    <p class="text-muted mb-4">
-                        Além de buscar uma oportunidade em tempo integral como Cientista de Dados no setor financeiro, 
-                        também atendo clientes em projetos pontuais de alto valor:
-                    </p>
-                    
-                    <div class="row text-start g-3 mb-4">
-                        <div class="col-md-4">
-                            <div class="p-3 rounded-3 bg-dark-subtle border border-secondary-subtle h-100">
-                                <h6 class="fw-bold text-white mb-2"><i class="bi bi-robot text-info me-2"></i>Agentes & Bots de IA</h6>
-                                <small class="text-muted">Treinamento de assistentes corporativos com RAG e bases privadas.</small>
+                <div class="col-lg-5">
+                    <div class="project-thumb-box">
+                        <span class="project-thumb-tag" data-en="{{ post.tag_en | default: 'Open Notebook' }}" data-pt="{{ post.tag_pt | default: 'Caderno Aberto' }}">
+                            {{ post.tag_en | default: 'Open Notebook' }}
+                        </span>
+                        
+                        {% if post.image %}
+                            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="project-card-image">
+                        {% else %}
+                            <div class="py-2 text-center">
+                                <i class="bi bi-journal-text text-primary" style="font-size: 2.4rem;"></i>
+                                <div class="mt-2 small text-muted font-monospace" data-en="{{ post.date_en | default: (post.date | date: '%B %d, %Y') }}" data-pt="{{ post.date_pt | default: (post.date | date: '%d/%m/%Y') }}">
+                                    {{ post.date_en | default: (post.date | date: '%B %d, %Y') }}
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="p-3 rounded-3 bg-dark-subtle border border-secondary-subtle h-100">
-                                <h6 class="fw-bold text-white mb-2"><i class="bi bi-gear-wide-connected text-warning me-2"></i>Automação & Scraping</h6>
-                                <small class="text-muted">Web crawlers robustos e automação de fluxos repetitivos de dados.</small>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="p-3 rounded-3 bg-dark-subtle border border-secondary-subtle h-100">
-                                <h6 class="fw-bold text-white mb-2"><i class="bi bi-graph-up text-success me-2"></i>Modelos ML & APIs</h6>
-                                <small class="text-muted">Desenvolvimento e deploy de APIs preditivas prontas para integração.</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="mailto:davidatascientist@gmail.com?subject=Oportunidade%20/%20Projeto%20de%20Consultoria" class="btn-tech-primary">
-                        <i class="bi bi-send-fill"></i> Solicitar Proposta de Projeto
-                    </a>
-                </div>
-
-                <!-- Main Contact Box -->
-                <div class="text-center reveal delay-1">
-                    <span class="section-tag">// VAMOS CONECTAR</span>
-                    <h2 class="section-heading">Vamos tomar um café virtual?</h2>
-                    <p class="section-subtext mb-4">
-                        Quer conversar sobre uma posição no seu time, tirar dúvidas sobre um projeto ou falar sobre prevenção a fraudes? Minha caixa de entrada está sempre aberta.
-                    </p>
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="mailto:davidatascientist@gmail.com" class="btn-tech-primary">
-                            <i class="bi bi-envelope-at-fill"></i> davidatascientist@gmail.com
-                        </a>
-                        <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="btn-tech-secondary">
-                            <i class="bi bi-linkedin"></i> Conectar no LinkedIn
-                        </a>
+                        {% endif %}
                     </div>
                 </div>
+            </div>
 
+            <!-- Card Bottom Bar: Tech Stack & Action Links -->
+            <div class="card-bottom-bar">
+                <div class="stack-pill-group">
+                    {% for tech in post.techs %}
+                    <span class="stack-pill">
+                        {% if tech.icon %}<i class="{{ tech.icon }}"></i>{% endif %} {{ tech.name }}
+                    </span>
+                    {% endfor %}
+                </div>
+                <a href="#" class="trigger-article-modal project-action-link" data-article-id="{{ forloop.index }}" data-en="Read Full Article <i class='bi bi-arrow-right'></i>" data-pt="Ler Artigo Completo <i class='bi bi-arrow-right'></i>">
+                    Read Full Article <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Hidden Article Content Template for In-Page Modal -->
+            <template id="template-{{ forloop.index }}" 
+                      data-title-en="{{ post.title_en | default: post.title }}" 
+                      data-title-pt="{{ post.title_pt | default: post.title }}"
+                      data-date-en="{{ post.date_en | default: (post.date | date: '%B %d, %Y') }}" 
+                      data-date-pt="{{ post.date_pt | default: (post.date | date: '%d/%m/%Y') }}">
+                <div class="article-content-wrapper">
+                    {{ post.content }}
+                </div>
+            </template>
+        </article>
+        {% endfor %}
+
+    </section>
+
+    <!-- =========================================================================
+         3. CONTACT BANNER (Wide)
+         ========================================================================= -->
+    <section class="contact-section">
+        <div class="contact-banner-wide reveal-on-scroll">
+            <h2 class="contact-banner-title" data-i18n="contactTitle">Let’s Connect</h2>
+            <p class="contact-banner-desc" data-i18n="contactDesc">
+                My inbox is always open for opportunities in Data Science within the financial sector, analytical challenges, or exchanging ideas about Machine Learning.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="mailto:davidatascientist@gmail.com" class="btn-contact-white" data-i18n="contactEmailBtn">
+                    <i class="bi bi-envelope-fill"></i> davidatascientist@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="btn-contact-outline" data-i18n="contactLinkedInBtn">
+                    <i class="bi bi-linkedin"></i> Connect on LinkedIn
+                </a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+</main>

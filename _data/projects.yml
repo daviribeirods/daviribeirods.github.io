@@ -1,0 +1,53 @@
+# ==============================================================================
+# PROJECTS DATA FILE (Portfolio v2.0)
+# ==============================================================================
+# Para adicionar um novo projeto, basta copiar o modelo no final deste arquivo
+# e preencher os campos com as informações do seu projeto.
+# ==============================================================================
+
+- id: synthetic-banking-data
+  title_en: "Synthetic Banking & Transaction Data Generator"
+  title_pt: "Gerador de Dados Sintéticos para Transações Bancárias"
+  desc_en: "Development of a probabilistic simulator for modeling <strong>banking transaction ecosystems</strong> (instant payments, cards, and wire transfers). Generates millions of records featuring real-world consumer behavior, seasonal patterns, and <strong>calibrated fraud anomalies</strong> to enable secure analytical workflows in strict compliance with <strong>banking secrecy and data privacy regulations (LGPD/GDPR)</strong>."
+  desc_pt: "Desenvolvimento de um simulador probabilístico para modelar <strong>ecossistemas de transações bancárias</strong> (Pix, cartões e transferências). Permite gerar milhões de registros com comportamento de consumo, sazonalidades e <strong>anomalias de fraude calibradas</strong>, garantindo testes analíticos seguros sob conformidade estrita com a <strong>LGPD e sigilo bancário</strong>."
+  tag_en: "Simulation & Plotly"
+  tag_pt: "Simulação & Plotly"
+  svg_type: "synthetic"
+  link_url: "https://github.com/daviribeirods/bio-heuristic-datasets"
+  link_text_en: "Track on GitHub"
+  link_text_pt: "Acompanhar no GitHub"
+  techs:
+    - name: "Python"
+      icon: "devicon-python-plain text-primary"
+    - name: "Plotly"
+      icon: "bi bi-pie-chart-fill text-warning"
+    - name: "Pandas"
+      icon: "devicon-pandas-plain text-info"
+    - name: "NumPy"
+      icon: "devicon-numpy-plain text-primary"
+    - name: "Streamlit"
+      icon: "devicon-streamlit-plain text-danger"
+
+- id: predictive-pricing-model
+  title_en: "Predictive Pricing & Revenue Optimization Model"
+  title_pt: "Modelo Preditivo de Precificação com Machine Learning"
+  desc_en: "Predictive modeling architecture for <strong>price optimization and demand elasticity measurement</strong>. Simulates macroeconomic scenarios and consumer purchase sensitivity to recommend optimal price bands, combining supervised algorithms with <strong>data-driven pricing strategies</strong>."
+  desc_pt: "Arquitetura preditiva para <strong>otimização de preços e mensuração de elasticidade de demanda</strong>. O sistema avalia múltiplos cenários econômicos e sensibilidade de compra do consumidor para sugerir faixas ideais de precificação, combinando algoritmos supervisionados e <strong>estratégia de pricing orientada a dados</strong>."
+  tag_en: "Elasticity & Regression"
+  tag_pt: "Elasticidade & Regressão"
+  svg_type: "pricing"
+  link_url: "https://github.com/daviribeirods/predictive-pricing"
+  link_text_en: "View on GitHub"
+  link_text_pt: "Ver no GitHub"
+  techs:
+    - name: "Python"
+      icon: "devicon-python-plain text-primary"
+    - name: "Scikit-Learn"
+      icon: "devicon-scikitlearn-plain text-warning"
+    - name: "XGBoost"
+      icon: "devicon-scikitlearn-plain text-warning"
+    - name: "Pandas"
+      icon: "devicon-pandas-plain text-info"
+    - name: "FastAPI"
+      icon: "devicon-fastapi-plain text-success"
+
