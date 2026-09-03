@@ -1,172 +1,244 @@
 ---
 layout: default
-title: Davi Ribeiro | Home
+title: Davi Santos | Data Scientist & Machine Learning
 ---
 
-<header id="home" class="bg-white py-5 min-vh-100 d-flex align-items-center">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-5 text-center mb-4 mb-lg-0">
-                <img src="{{ '/assets/img/profile.webp' | relative_url }}" alt="Davi Ribeiro" class="rounded-circle profile-img">
-            </div>
+{% assign total_projects = site.data.projects.size | default: 0 %}
+{% assign total_articles = site.posts.size | default: 0 %}
+{% assign total_all = total_projects | plus: total_articles %}
+
+<main class="main-container">
+
+    <!-- =========================================================================
+         1. HERO SECTION (Wide 2-Column: Content Left, Original Photo Right)
+         ========================================================================= -->
+    <section class="hero-wide">
+        <div class="row align-items-center g-4 g-lg-5">
             
-            <div class="col-lg-7 text-center text-lg-start">
-                <h1 class="display-4 fw-bold text-primary">Davi Ribeiro</h1>
-                <h3 class="text-secondary mb-4">Cientista de Dados | Desenvolvedor de Software</h3>
-                <p class="fs-5 text-muted mb-4">
-                    Transformo grandes volumes de dados em insights estratégicos. 
-                    Especialista em modelos preditivos e apaixonado pela intersecção entre 
-                    tecnologia e negócios.
-                </p>
+            <!-- Left Column: Content & Actions -->
+            <div class="col-lg-7">
+                <h1 class="hero-title" data-i18n="heroName">Davi Santos</h1>
+                <div class="hero-subtitle" data-i18n="heroSubtitle">Data Scientist | Machine Learning & Predictive Modeling</div>
                 
-                <div class="d-flex justify-content-center justify-content-lg-start gap-4 mb-5">
-                    <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="social-icon" title="LinkedIn">
-                        <i class="bi bi-linkedin"></i>
+                <p class="hero-bio" data-i18n="heroBio">
+                    Hi! I’m Davi. This is where I document my hands-on <strong>Data Science</strong> projects, <strong>Machine Learning</strong> studies, and notes on what I’m actively learning and building.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="mailto:davidatascientist@gmail.com" class="btn-primary-corporate" data-i18n="getInTouch">
+                        <i class="bi bi-envelope-fill"></i> Get in Touch
                     </a>
-                    <a href="https://www.youtube.com/@daviribeirods" target="_blank" class="social-icon" title="YouTube">
-                        <i class="bi bi-youtube"></i>
+                    <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="social-icon-btn" title="LinkedIn" aria-label="LinkedIn">
+                        <i class="bi bi-linkedin text-primary"></i>
                     </a>
-                    <a href="https://github.com/daviribeirods" target="_blank" class="social-icon" title="GitHub">
+                    <a href="https://github.com/daviribeirods" target="_blank" class="social-icon-btn" title="GitHub" aria-label="GitHub">
                         <i class="bi bi-github"></i>
                     </a>
-                    <a href="https://x.com/daviribeirods" target="_blank" class="social-icon" title="Twitter">
-                        <i class="bi bi-twitter-x"></i> 
+                    <a href="https://www.youtube.com/@davisantos_py" target="_blank" class="social-icon-btn" title="YouTube Shorts" aria-label="YouTube Shorts">
+                        <i class="bi bi-youtube text-danger"></i>
                     </a>
-                    <a href="https://medium.com/@davidatascientist" target="_blank" class="social-icon" title="Medium">
-                        <i class="bi bi-medium"></i>
+                    <a href="https://www.tiktok.com/@davisantos_py" target="_blank" class="social-icon-btn" title="TikTok" aria-label="TikTok">
+                        <i class="bi bi-tiktok"></i>
+                    </a>
+                    <a href="{{ '/assets/curriculum/curriculo.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Currículo em PDF" aria-label="CV / Resume">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
                     </a>
                 </div>
+            </div>
 
-                <a href="assets/curriculum/curriculo.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg px-5 rounded-pill shadow-sm">
-                    <i class="bi bi-file-earmark-pdf-fill me-2"></i>Ver Currículo
+            <!-- Right Column: Avatar with Soft Ground Shadow (Opção C) -->
+            <div class="col-lg-5">
+                <div class="hero-shadow-wrapper">
+                    <div class="hero-photo-ambient-glow"></div>
+                    <img src="{{ '/assets/img/profile.webp' | relative_url }}?v=3.1" alt="Davi Santos - Data Scientist" class="hero-shadow-avatar">
+                    <div class="hero-ground-shadow"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         2. WORK FEED (Data-Driven: Projects & Articles)
+         ========================================================================= -->
+    <section class="projects-section">
+        
+        <!-- Filter Tabs (Card-styled with dynamic counts) -->
+        <div class="feed-filter-bar">
+            <button class="feed-filter-btn active" data-filter="all" data-i18n="allFilter">
+                <i class="bi bi-grid-fill"></i> All <span class="filter-count">{{ total_all }}</span>
+            </button>
+            <button class="feed-filter-btn" data-filter="project" data-i18n="projectsFilter">
+                <i class="bi bi-code-slash"></i> Projects <span class="filter-count">{{ total_projects }}</span>
+            </button>
+            <button class="feed-filter-btn" data-filter="article" data-i18n="articlesFilter">
+                <i class="bi bi-journal-text"></i> Articles <span class="filter-count">{{ total_articles }}</span>
+            </button>
+        </div>
+
+        <!-- ================= PROJECTS LIST (From _data/projects.yml) ================= -->
+        {% for proj in site.data.projects %}
+        <article class="project-card-wide reveal-on-scroll" data-category="project">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-7">
+                    <h2 class="project-title-wide" data-en="{{ proj.title_en | default: proj.title_pt }}" data-pt="{{ proj.title_pt | default: proj.title_en }}">
+                        {{ proj.title_en | default: proj.title_pt }}
+                    </h2>
+                    <p class="project-desc-wide" data-en="{{ proj.desc_en | default: proj.desc_pt }}" data-pt="{{ proj.desc_pt | default: proj.desc_en }}">
+                        {{ proj.desc_en | default: proj.desc_pt }}
+                    </p>
+                </div>
+                
+                <!-- Graphic / Image Preview Thumbnail -->
+                <div class="col-lg-5">
+                    <div class="project-thumb-box">
+                        <span class="project-thumb-tag" data-en="{{ proj.tag_en | default: proj.tag_pt }}" data-pt="{{ proj.tag_pt | default: proj.tag_en }}">
+                            {{ proj.tag_en | default: proj.tag_pt }}
+                        </span>
+
+                        {% if proj.image %}
+                            <img src="{{ proj.image | relative_url }}" alt="{{ proj.title_en }}" class="project-card-image">
+                        {% elsif proj.svg_type == 'synthetic' %}
+                            <svg viewBox="0 0 280 110" width="100%" height="90" style="overflow: visible;">
+                                <defs>
+                                    <linearGradient id="gradSynthClean" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25" />
+                                        <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.0" />
+                                    </linearGradient>
+                                </defs>
+                                <line x1="10" y1="95" x2="270" y2="95" stroke="currentColor" opacity="0.12" />
+                                <path d="M 10 95 Q 45 92, 75 70 T 140 25 T 205 78 T 270 95 Z" fill="url(#gradSynthClean)" />
+                                <path d="M 10 95 Q 45 92, 75 70 T 140 25 T 205 78 T 270 95" fill="none" stroke="#2563EB" stroke-width="2.5" />
+                                <circle cx="140" cy="25" r="4.5" fill="#EF4444" />
+                                <circle cx="140" cy="25" r="9" fill="#EF4444" opacity="0.2" />
+                                <text x="152" y="22" fill="#EF4444" font-size="10" font-weight="700" data-en="Fraud Anomaly" data-pt="Anomalia Sintética">Fraud Anomaly</text>
+                                <text x="140" y="105" fill="currentColor" opacity="0.5" font-size="9" text-anchor="middle" data-en="Calibrated Transaction Distribution" data-pt="Distribuição Transacional Calibrada">Calibrated Transaction Distribution</text>
+                            </svg>
+                        {% elsif proj.svg_type == 'pricing' %}
+                            <svg viewBox="0 0 280 110" width="100%" height="90" style="overflow: visible;">
+                                <defs>
+                                    <linearGradient id="gradPricing" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#10B981" stop-opacity="0.25" />
+                                        <stop offset="100%" stop-color="#10B981" stop-opacity="0.0" />
+                                    </linearGradient>
+                                </defs>
+                                <line x1="10" y1="95" x2="270" y2="95" stroke="currentColor" opacity="0.12" />
+                                <path d="M 15 20 Q 80 50, 150 75 T 265 92" fill="none" stroke="#059669" stroke-width="2.5" />
+                                <path d="M 60 95 Q 140 18, 220 95 Z" fill="url(#gradPricing)" />
+                                <path d="M 60 95 Q 140 18, 220 95" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="3,3" />
+                                <circle cx="140" cy="18" r="4.5" fill="#10B981" />
+                                <text x="140" y="10" fill="#10B981" font-size="10" font-weight="700" text-anchor="middle" data-en="Optimal Revenue Point" data-pt="Ponto Ótimo de Receita">Optimal Revenue Point</text>
+                                <text x="140" y="105" fill="currentColor" opacity="0.5" font-size="9" text-anchor="middle" data-en="Demand Curve & Elasticity" data-pt="Curva de Demanda & Elasticidade">Demand Curve & Elasticity</text>
+                            </svg>
+                        {% else %}
+                            <div class="project-thumb-placeholder py-3">
+                                <i class="bi bi-cpu text-primary" style="font-size: 2.5rem;"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Bottom Bar: Tech Stack & Action Links -->
+            <div class="card-bottom-bar">
+                <div class="stack-pill-group">
+                    {% for tech in proj.techs %}
+                    <span class="stack-pill">
+                        {% if tech.icon %}<i class="{{ tech.icon }}"></i>{% endif %} {{ tech.name }}
+                    </span>
+                    {% endfor %}
+                </div>
+                {% if proj.link_url %}
+                <a href="{{ proj.link_url }}" target="_blank" class="project-action-link" data-en="{{ proj.link_text_en | default: 'View Project' }} <i class='bi bi-arrow-right'></i>" data-pt="{{ proj.link_text_pt | default: 'Ver Projeto' }} <i class='bi bi-arrow-right'></i>">
+                    {{ proj.link_text_en | default: 'View Project' }} <i class="bi bi-arrow-right"></i>
+                </a>
+                {% endif %}
+            </div>
+        </article>
+        {% endfor %}
+
+        <!-- ================= ARTICLES LIST (From _posts/*.md) ================= -->
+        {% for post in site.posts %}
+        <article class="project-card-wide reveal-on-scroll" data-category="article">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-7">
+                    <h2 class="project-title-wide">
+                        <a href="#" class="trigger-article-modal text-decoration-none text-reset" data-article-id="{{ forloop.index }}" data-en="{{ post.title_en | default: post.title }}" data-pt="{{ post.title_pt | default: post.title }}">
+                            {{ post.title_en | default: post.title }}
+                        </a>
+                    </h2>
+                    <p class="project-desc-wide" data-en="{{ post.desc_en | default: post.desc_pt }}" data-pt="{{ post.desc_pt | default: post.desc_en }}">
+                        {{ post.desc_en | default: post.desc_pt }}
+                    </p>
+                </div>
+                
+                <div class="col-lg-5">
+                    <div class="project-thumb-box">
+                        <span class="project-thumb-tag" data-en="{{ post.tag_en | default: 'Open Notebook' }}" data-pt="{{ post.tag_pt | default: 'Caderno Aberto' }}">
+                            {{ post.tag_en | default: 'Open Notebook' }}
+                        </span>
+                        
+                        {% if post.image %}
+                            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="project-card-image">
+                        {% else %}
+                            <div class="py-2 text-center">
+                                <i class="bi bi-journal-text text-primary" style="font-size: 2.4rem;"></i>
+                                <div class="mt-2 small text-muted font-monospace" data-en="{{ post.date_en | default: (post.date | date: '%B %d, %Y') }}" data-pt="{{ post.date_pt | default: (post.date | date: '%d/%m/%Y') }}">
+                                    {{ post.date_en | default: (post.date | date: '%B %d, %Y') }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Bottom Bar: Tech Stack & Action Links -->
+            <div class="card-bottom-bar">
+                <div class="stack-pill-group">
+                    {% for tech in post.techs %}
+                    <span class="stack-pill">
+                        {% if tech.icon %}<i class="{{ tech.icon }}"></i>{% endif %} {{ tech.name }}
+                    </span>
+                    {% endfor %}
+                </div>
+                <a href="#" class="trigger-article-modal project-action-link" data-article-id="{{ forloop.index }}" data-en="Read Full Article <i class='bi bi-arrow-right'></i>" data-pt="Ler Artigo Completo <i class='bi bi-arrow-right'></i>">
+                    Read Full Article <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Hidden Article Content Template for In-Page Modal -->
+            <template id="template-{{ forloop.index }}" 
+                      data-title-en="{{ post.title_en | default: post.title }}" 
+                      data-title-pt="{{ post.title_pt | default: post.title }}"
+                      data-date-en="{{ post.date_en | default: (post.date | date: '%B %d, %Y') }}" 
+                      data-date-pt="{{ post.date_pt | default: (post.date | date: '%d/%m/%Y') }}">
+                <div class="article-content-wrapper">
+                    {{ post.content }}
+                </div>
+            </template>
+        </article>
+        {% endfor %}
+
+    </section>
+
+    <!-- =========================================================================
+         3. CONTACT BANNER (Wide)
+         ========================================================================= -->
+    <section class="contact-section">
+        <div class="contact-banner-wide reveal-on-scroll">
+            <h2 class="contact-banner-title" data-i18n="contactTitle">Let’s Connect</h2>
+            <p class="contact-banner-desc" data-i18n="contactDesc">
+                My inbox is always open for opportunities in Data Science within the financial sector, analytical challenges, or exchanging ideas about Machine Learning.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="mailto:davidatascientist@gmail.com" class="btn-contact-white" data-i18n="contactEmailBtn">
+                    <i class="bi bi-envelope-fill"></i> davidatascientist@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="btn-contact-outline" data-i18n="contactLinkedInBtn">
+                    <i class="bi bi-linkedin"></i> Connect on LinkedIn
                 </a>
             </div>
         </div>
-    </div>
-</header>
-
-    <section id="portfolio" class="bg-light">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-5">Projetos em Destaque</h2>
-            <p class="text-muted fs-5">Projetos em andamento. Volte em breve para novidades!</p>
-            <!-- <div class="col-md-7 mx-auto">
-                <div class="card border-0 shadow-sm p-5 rounded-4 mb-4">
-                    <h4 class="fw-bold">Análise de Dados com Python</h4>
-                    <p class="text-muted mb-3">Estudo de caso sobre o mercado financeiro usando Pandas e Matplotlib.</p>
-                    <a href="pages/projeto1.html" target="_blank" class="btn btn-sm btn-outline-primary w-25 mx-auto">Ver detalhes</a>
-                </div>
-            </div> -->
-        </div>
     </section>
 
-    <section id="sobre" class="bg-white">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-7">
-                    <h2 class="fw-bold mb-5 text-center">Minha Trajetória</h2>
-                    <div class="exp-item mb-5">
-                        <h5 class="fw-bold mb-1">Engenheiro de Soluções</h5>
-                        <p class="text-primary fw-medium mb-2">Dadosfera • Fev/2025 - Agosto/2025</p>
-                        <ul class="text-secondary">
-                            <li> Suporte técnico na migração de infraestrutura legada (IBM) para Snowflake, atuando na documentação técnica e na validação de schemas traduzidos via LLMs (OpenAI, Gemini e Anthropic).</li>
-                            <li> Configuração e ajuste de sistemas inteligentes baseados em arquitetura RAG e agentes de IA, adaptando pipelines existentes para atender necessidades específicas de clientes corporativos.</li>
-                            <li> Desenvolvimento e manutenção de APIs utilizando FastAPI e Flask, com foco na automação de deploys via GitHub Actions em ambientes AWS.</li>
-                            <li> Atuação em FinOps, auxiliando na governança de dados e otimização de queries, contribuindo para uma redução de 10% nos custos de Cloud.</li>
-                        </ul>
-                    </div>
-
-                    <div class="exp-item mb-5">
-                        <h5 class="fw-bold mb-1">Cientista de Dados</h5>
-                        <p class="text-primary fw-medium mb-2">Dadosfera • Ago/2024 - Fev/2025</p>
-                        <ul class="text-secondary">
-                            <li> Construção de modelos de Machine Learning (XGBoost) para detecção de fraudes, triplicando o volume de detecção nas primeiras semanas.</li>
-                            <li> Implementação de algoritmos de Clusterização e análise RFM para segmentação de base e retenção de clientes.</li>
-                            <li> Engenharia de features em larga escala utilizando Snowpark, PySpark e SQL avançado.</li>
-                        </ul>
-                    </div>
-
-                    <div class="exp-item mb-5">
-                        <h5 class="fw-bold mb-1">Analista de Dados</h5>
-                        <p class="text-primary fw-medium mb-2">Dadosfera • Jul/2023 - Ago/2024</p>
-                        <ul class="text-secondary">
-                            <li> Implementação e execução da migração massiva de dados do GA3 para Snowflake, desenvolvendo pipelines de dados em batch para garantir a integridade de milhões de registros.</li>
-                            <li> Construção do zero de Web Crawlers em Python, estruturando dados não estruturados e automatizando integralmente o fluxo de qualificação de leads.</li>
-                            <li> Desenvolvimento e deploy de Data Apps em Streamlit e dashboards em Metabase, facilitando o monitoramento de KPIs em tempo real para o time executivo.</li>
-                        </ul>
-                    </div>
-
-                    <div class="exp-item mb-5">
-                        <h5 class="fw-bold mb-1">Bacharelado em Ciência da Computação (Formação)</h5>
-                        <p class="text-primary fw-medium mb-2">Universidade Federal do Tocantins, Palmas-TO • 2016 - 2021</p>
-                        <ul class="text-secondary">
-                            <li><strong>Trabalho de Conclusão:</strong> Desenvolvimento de modelo de Análise de Sentimentos para tendências do mercado financeiro usando Python e Scikit-learn.</li>
-                            <li><strong>Monitoria Acadêmica:</strong> Mentoria de alunos em Estrutura de Dados I e II (Linguagem C) e Cálculo Diferencial e Integral.</li>
-                            <li><strong>Maratona de Programação:</strong> Classificação para as finais nacionais da Maratona de Programação da SBC em 2017 e 2018.</li>
-                        </ul>
-                    </div>
-
-                    <div class="exp-item mb-5">
-                        <h5 class="fw-bold mb-1">Técnico em Informática para Internet (Formação)</h5>
-                        <p class="text-primary fw-medium mb-2">Instituto Federal do Tocantins, Palmas-TO • 2013 - 2015</p>
-                        <p class="text-secondary">Ensino Médio Integrado ao curso técnico de Informática para Internet. O curso tinha o foco em lógica de programação, arquitetura de redes e desenvolvimento web (PHP/JavaScript/SQL).</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="bg-light">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-5">Tecnologias & Ferramentas</h2>
-            <div class="row justify-content-center gap-4">
-                <!-- Python -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-python-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">Python</p>
-                </div>
-                <!-- Pandas -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-pandas-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">Pandas</p>
-                </div>
-                <!-- Scikit-Learn -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-scikitlearn-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">Scikit-learn</p>
-                </div>
-                <!-- SQL -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-azuresqldatabase-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">SQL</p>
-                </div>
-                <!-- AWS -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-amazonwebservices-plain-wordmark colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">AWS</p>
-                </div>
-                <!-- Docker -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-docker-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">Docker</p>
-                </div>
-                <!-- Git -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-git-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">Git</p>
-                </div>
-                <!-- Streamlit -->
-                <div class="col-4 col-md-2 mb-4">
-                    <i class="devicon-streamlit-plain colored tech-icon"></i>
-                    <p class="mt-2 fw-bold text-secondary">Streamlit</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contato" class="bg-white text-center">
-        <div class="container">
-            <h2 class="fw-bold mb-4">Vamos conversar?</h2>
-            <p class="text-muted mb-4">Sinta-se à vontade para me mandar uma mensagem!</p>
-            <a href="mailto:davidatascientist@gmail.com" class="btn btn-primary btn-lg rounded-pill px-5">Enviar Email</a>
-        </div>
-    </section>
+</main>

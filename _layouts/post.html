@@ -1,19 +1,29 @@
 ---
 layout: default
 ---
-<main class="container py-5 mt-4" style="max-width: 800px;">
+<main class="container py-5 mt-4" style="max-width: 860px;">
     <article>
-        <header class="mb-5 border-bottom pb-4 text-center">
-            <h1 class="display-5 fw-bold text-primary">{{ page.title }}</h1>
-            <p class="text-muted mt-3">Publicado em {{ page.date | date: "%d/%m/%Y" }}</p>
+        <header class="mb-5 border-bottom pb-4">
+            <span class="project-tag article mb-2 d-inline-block" data-en="Technical Article • Open Notebook" data-pt="Artigo Técnico • Caderno Aberto">Technical Article • Open Notebook</span>
+            <h1 class="display-5 fw-bold mb-3" data-en="{{ page.title_en | default: page.title }}" data-pt="{{ page.title_pt | default: page.title }}">{{ page.title_en | default: page.title }}</h1>
+            <div class="d-flex align-items-center gap-3 text-muted small">
+                <span><i class="bi bi-calendar3 me-1 text-primary"></i> <span data-en="{{ page.date_en | default: (page.date | date: '%B %d, %Y') }}" data-pt="{{ page.date_pt | default: (page.date | date: '%d/%m/%Y') }}">{{ page.date_en | default: (page.date | date: '%B %d, %Y') }}</span></span>
+                <span>•</span>
+                <span><i class="bi bi-person-fill me-1 text-primary"></i> Davi Santos</span>
+            </div>
         </header>
         
-        <section class="lh-lg post-content">
+        <section class="lh-lg post-content fs-5" style="color: var(--text-muted);">
             {{ content }}
         </section>
         
-        <div class="mt-5 pt-4 border-top">
-            <a href="{{ '/blog.html' | relative_url }}" class="btn btn-link text-decoration-none px-0">← Voltar para o Blog</a>
+        <div class="mt-5 pt-4 border-top d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <a href="{{ '/' | relative_url }}" class="btn-secondary-corporate" data-i18n="modalBackBtn">
+                <i class="bi bi-arrow-left"></i> Back to Portfolio
+            </a>
+            <a href="https://www.linkedin.com/in/daviribeirods/" target="_blank" class="btn-primary-corporate" data-i18n="contactLinkedInBtn">
+                <i class="bi bi-linkedin"></i> Connect on LinkedIn
+            </a>
         </div>
     </article>
 </main>
